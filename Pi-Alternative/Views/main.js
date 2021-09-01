@@ -1,6 +1,6 @@
 let mainView = () => `
-<div>main</div>
-<button onclick="changeView(gameHTML)">game</button>
+<div>Main Site</div>
+<button onclick="changeView(gameHTML)">Game</button>
 <button onclick="changeView(statisticsHTML)">Statistics</button>
-<button onclick="changeView(leaderboardHTML)">leaderBoard</button>
+<button onclick="changeView(leaderboardHTML)">LeaderBoard</button>
 `;
