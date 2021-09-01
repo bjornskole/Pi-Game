@@ -5,13 +5,15 @@ let gameboardHTML = () => `
    `;
 
 function checkInput(val) {
+  let str;
   pi.calculate();
   str = pi.decimalsStr;
   if (val == str.charAt(str.length - 1)) {
     console.log("right answer");
+    updateView();
+    document.getElementById("gameInput").focus();
   } else {
     console.log("wrong answer");
+    changeView(gameOver);
   }
-  updateView();
-  document.getElementById("gameInput").focus();
 }
