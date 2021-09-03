@@ -9,3 +9,4 @@ function updateView() {
 }
 changeView(mainView);
 ///// updated
+// Adrian be testing if the commit is allowed or nah
