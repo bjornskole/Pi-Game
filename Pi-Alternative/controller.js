@@ -15,3 +15,8 @@ function changeView(element) {
   model.router.currentPage = element();
   updateView();
 }
+
+function backBtn() {
+  changeView(mainView);
+  resetDecimalsStr();
+}

@@ -2,7 +2,6 @@ let gameboardHTML = function () {
   return `
 <div>${model.gameModes.selected === "Practice" ? Practice() : Normal()}</div>`;
 };
-//model.gameModes.selected == "Practice" ? pi.decimalsStr higlight last : pi.decimalsStr
 
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
@@ -12,7 +11,6 @@ let Practice = function () {
 };
 
 let Normal = function () {
-  //  pi.decimalsStr = "";
   return `
 <div>Game Mode: Normal</div>
 <div>${pi.decimalsStr}</div>
@@ -27,6 +25,7 @@ function checkNormal(val) {
   if (val == str.charAt(str.length - 1)) {
     console.log("right answer");
     console.log(str);
+    console.log(pi.decimalsStr);
     updateView();
     document.getElementById("gameInput").focus();
   } else {
