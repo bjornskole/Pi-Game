@@ -6,7 +6,7 @@ let gameboardHTML = function () {
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
   <div>${pi.decimalsStr}</div>
-  <input id="gameInput" oninput="checkAnswer(this.value, Practice)" />
+  <input id="gameInput" oninput="checkAnswer(this.value, "Practice")" />
   `;
 };
 
@@ -14,7 +14,7 @@ let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
 <div>${pi.decimalsStr}</div>
-<input id="gameInput" oninput="checkAnswer(this.value, Normal)" />
+<input id="gameInput" oninput="checkAnswer(this.value, "Normal")" />
 `;
 };
 function checkAnswer(val, mode) {
