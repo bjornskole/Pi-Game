@@ -9,5 +9,5 @@ ${resetDecimalsStr()}
 
 let resetDecimalsStr = function () {
   pi.decimalsStr = "";
-  return "";
+  console.log(pi.decimalsStr);
 };
