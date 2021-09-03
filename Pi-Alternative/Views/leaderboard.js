@@ -3,4 +3,5 @@ let score = (item) =>
 
 let leaderboardHTML = () => `
    <div>${score(model.data.players)}</div>
+   <div>${setLeaderboardType("Normal")}</div>
    `;
