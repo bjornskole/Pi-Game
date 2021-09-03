@@ -1,6 +1,7 @@
 //Model
 
 const model = {
+  decimalsStr: pi.decimalsStr,
   router: {
     currentPage: "main",
     pages: ["main", "gameMode", "game", "leaderboard", "statistics"],
@@ -13,6 +14,7 @@ const model = {
   },
   gameInput: {},
   gameModes: {
+    selected: "Practice",
     mode: ["Practice", "Normal"], //++ -- on <- ->  buttons
   },
   statistics: {
