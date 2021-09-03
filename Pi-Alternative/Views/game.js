@@ -14,9 +14,15 @@ let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
 <div>${pi.decimalsStr}</div>
-<input id="gameInput" oninput="checkNormal(this.value)" />
+<input id="gameInput" oninput="checkAnswer(this.value, Normal)" />
 `;
 };
+function checkAnswer(val, mode) {
+  pi.get(pi.decimalsStr.length);
+  val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)
+    ? (changeView(mode), document.getElementById("gameInput").focus())
+    : changeView(gameOver);
+}
 
 function checkNormal(val) {
   let str;
