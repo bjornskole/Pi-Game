@@ -23,13 +23,9 @@ function checkNormal(val) {
   pi.get(pi.decimalsStr.length);
   str = pi.decimalsStr;
   if (val == str.charAt(str.length - 1)) {
-    console.log("right answer");
-    console.log(str);
-    console.log(pi.decimalsStr);
     changeView(Normal);
     document.getElementById("gameInput").focus();
   } else {
-    console.log(val + " was wrong");
     changeView(gameOver);
   }
 }
