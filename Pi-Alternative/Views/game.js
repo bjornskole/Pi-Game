@@ -26,7 +26,7 @@ function checkNormal(val) {
     console.log("right answer");
     console.log(str);
     console.log(pi.decimalsStr);
-    updateView();
+    changeView(Normal);
     document.getElementById("gameInput").focus();
   } else {
     console.log(val + " was wrong");
