@@ -48,7 +48,6 @@ function setLeaderboardType(val) {
 }
 
 function inputFocus(element) {
-  console.log(element);
   switch (element) {
     case mainView:
       document.getElementById("inputBox").focus();
@@ -57,7 +56,6 @@ function inputFocus(element) {
       document.getElementById("inputBox").focus();
       break;
     default:
-      console.log("default");
   }
 }
 
