@@ -30,18 +30,20 @@ function setLeaderboardType(val) {
       tmp.push(model.data.gamesPlayed[i]);
     }
   }
-  function sortScore(a,b) {
-    if (a.score > b.score)
-      return -1;
-    if (a.score < b.score)
-      return 1
+  function sortScore(a, b) {
+    if (a.score > b.score) return -1;
+    if (a.score < b.score) return 1;
     return 0;
-  };
-  tmp.sort(sortScore)
+  }
+  tmp.sort(sortScore);
   for (let i = 0; i < tmp.length; i++) {
       names = model.data.players.find( ({playerId})=> playerId === tmp[i].playerId).playerName;
       tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
   }
-  
+
   return `${tmpTxt}`;
+}
+
+function inputFocus(eleId) {
+  document.getElementById(eleId).focus();
 }
