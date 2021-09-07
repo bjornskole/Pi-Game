@@ -14,6 +14,7 @@ function setGameMode(val) {
 function changeView(element) {
   model.router.currentPage = element();
   updateView();
+  inputFocus(element);
 }
 
 function backBtn() {
@@ -44,8 +45,23 @@ function setLeaderboardType(val) {
   return `${tmpTxt}`;
 }
 
-function inputFocus(eleId) {
-  document.getElementById(eleId).focus();
+function inputFocus(element) {
+  console.log(element);
+  switch (element) {
+    case Practice:
+      document.getElementById("inputBox").focus();
+      break;
+
+    case Normal:
+      document.getElementById("inputBox").focus();
+      break;
+
+    case mainView:
+      document.getElementById("inputBox").focus();
+      break;
+    default:
+      console.log("default");
+  }
 }
 
 function listChange(get, set, val) {
