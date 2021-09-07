@@ -38,8 +38,10 @@ function setLeaderboardType(val) {
   }
   tmp.sort(sortScore);
   for (let i = 0; i < tmp.length; i++) {
-      names = model.data.players.find( ({playerId})=> playerId === tmp[i].playerId).playerName;
-      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
+    names = model.data.players.find(
+      ({ playerId }) => playerId === tmp[i].playerId
+    ).playerName;
+    tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
   }
 
   return `${tmpTxt}`;
@@ -48,15 +50,10 @@ function setLeaderboardType(val) {
 function inputFocus(element) {
   console.log(element);
   switch (element) {
-    case Practice:
-      document.getElementById("inputBox").focus();
-      break;
-
-    case Normal:
-      document.getElementById("inputBox").focus();
-      break;
-
     case mainView:
+      document.getElementById("inputBox").focus();
+      break;
+    case gameboardHTML:
       document.getElementById("inputBox").focus();
       break;
     default:
@@ -82,11 +79,19 @@ function listChange(get, set, val) {
   }
   return tmp;
 }
-function gamemodeBack(view){
-  model.gameModes.selected = listChange(model.gameModes.selected, model.gameModes.mode, '-');
+function gamemodeBack(view) {
+  model.gameModes.selected = listChange(
+    model.gameModes.selected,
+    model.gameModes.mode,
+    "-"
+  );
   changeView(view);
 }
-function gamemodeForward(view){
-  model.gameModes.selected = listChange(model.gameModes.selected, model.gameModes.mode, '+');
+function gamemodeForward(view) {
+  model.gameModes.selected = listChange(
+    model.gameModes.selected,
+    model.gameModes.mode,
+    "+"
+  );
   changeView(view);
 }
