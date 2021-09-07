@@ -47,3 +47,30 @@ function setLeaderboardType(val) {
 function inputFocus(eleId) {
   document.getElementById(eleId).focus();
 }
+
+function listChange(get, set, val) {
+  let index = set.indexOf(get);
+  let tmp;
+  if (index == 0 && val == "-") {
+    tmp = set[set.length - 1];
+  } else if (index == set.length - 1 && val == "+") {
+    tmp = set[0];
+  } else if (val == "-") {
+    index -= 1;
+    tmp = set[index];
+  } else if (val == "+") {
+    index += 1;
+    tmp = set[index];
+  } else {
+    tmp = set[val];
+  }
+  return tmp;
+}
+function gamemodeBack(view){
+  model.gameModes.selected = listChange(model.gameModes.selected, model.gameModes.mode, '-');
+  changeView(view);
+}
+function gamemodeForward(view){
+  model.gameModes.selected = listChange(model.gameModes.selected, model.gameModes.mode, '+');
+  changeView(view);
+}
