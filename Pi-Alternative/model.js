@@ -25,6 +25,9 @@ const model = {
     gamesPlayed: [
       { date: "12/08/21", score: 18, playerId: 1, gamemode: "Normal" },
       { date: "12/08/21", score: 18, playerId: 2, gamemode: "Practice" },
+      { date: "12/08/21", score: 7,  playerId: 1, gamemode: "Normal" },
+      { date: "12/08/21", score: 18, playerId: 1, gamemode: "Practice" },
+      { date: "12/08/21", score: 10, playerId: 2, gamemode: "Normal" },
     ],
     players: [
       {

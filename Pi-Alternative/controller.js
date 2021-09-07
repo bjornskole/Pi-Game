@@ -30,14 +30,18 @@ function setLeaderboardType(val) {
       tmp.push(model.data.gamesPlayed[i]);
     }
   }
-  for (let i = 0; i < model.data.players.length; i++) {
-    if (model.data.players[i].playerId === tmp[i].playerId) {
-      names.push(model.data.players[i].playerName);
-    }
+  function sortScore(a,b) {
+    if (a.score > b.score)
+      return -1;
+    if (a.score < b.score)
+      return 1
+    return 0;
+  };
+  tmp.sort(sortScore)
+  for (let i = 0; i < tmp.length; i++) {
+      names = model.data.players.find( ({playerId})=> playerId === tmp[i].playerId).playerName;
+      tmpTxt += `${tmp[i].date} ${names}   ${tmp[i].score}   ${tmp[i].gamemode}<br>`;
   }
-  for (i = 0; i < tmp.length; i++) {
-    tmpTxt += `${tmp[i].date} ${names[i]}   ${tmp[i].score}   ${tmp[i].gamemode}<br>`;
-  }
-  console.log(names);
+  
   return `${tmpTxt}`;
 }
