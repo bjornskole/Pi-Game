@@ -7,7 +7,6 @@ let Practice = function () {
   return `<div>Game Mode: Practice</div>
   <div>${pi.decimalsStr}</div>
   <input id="gameInput" oninput="checkAnswer(this.value, Practice)"/>
-  ${inputFocus("gameInput")}
   `;
 };
 
@@ -16,7 +15,6 @@ let Normal = function () {
 <div>Game Mode: Normal</div>
 <div>${pi.decimalsStr}</div>
 <input id="gameInput" oninput="checkAnswer(this.value, Normal)"/>
-${inputFocus("gameInput")}
 `;
 };
 function checkAnswer(val, mode) {
@@ -27,10 +25,12 @@ function checkAnswer(val, mode) {
   ) {
     case Practice:
       changeView(mode);
+      inputFocus("gameInput");
       break;
 
     case Normal:
       changeView(mode);
+      inputFocus("gameInput");
       break;
 
     case "GameOver":
