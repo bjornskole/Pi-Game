@@ -6,7 +6,8 @@ let gameboardHTML = function () {
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
   <div>${pi.decimalsStr}</div>
-  <input id="gameInput" oninput="checkAnswer(this.value, Practice)" />
+  <input id="gameInput" oninput="checkAnswer(this.value, Practice)"/>
+  ${inputFocus("gameInput")}
   `;
 };
 
@@ -14,12 +15,26 @@ let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
 <div>${pi.decimalsStr}</div>
-<input id="gameInput" oninput="checkAnswer(this.value, Normal)" />
+<input id="gameInput" oninput="checkAnswer(this.value, Normal)"/>
+${inputFocus("gameInput")}
 `;
 };
 function checkAnswer(val, mode) {
   pi.get(pi.decimalsStr.length);
-  val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)
-    ? (changeView(mode), document.getElementById("gameInput").focus())
-    : changeView(gameOver);
+  console.log(pi.decimalsStr);
+  switch (
+    val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
+  ) {
+    case Practice:
+      changeView(mode);
+      break;
+
+    case Normal:
+      changeView(mode);
+      break;
+
+    case "GameOver":
+      changeView(gameOver);
+      break;
+  }
 }
