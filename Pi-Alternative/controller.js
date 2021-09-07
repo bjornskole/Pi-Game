@@ -40,7 +40,7 @@ function setLeaderboardType(val) {
   tmp.sort(sortScore)
   for (let i = 0; i < tmp.length; i++) {
       names = model.data.players.find( ({playerId})=> playerId === tmp[i].playerId).playerName;
-      tmpTxt += `${tmp[i].date} ${names}   ${tmp[i].score}   ${tmp[i].gamemode}<br>`;
+      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
   }
   
   return `${tmpTxt}`;
