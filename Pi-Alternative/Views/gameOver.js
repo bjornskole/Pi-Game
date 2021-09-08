@@ -15,7 +15,7 @@ let resetDecimalsStr = function () {
 let gamescore = 5 //temp value to make saveData() add an actual value, remove/replace if needed
 
 function saveData() {
-  //get current date formatted dd/mm/yyyy
+  //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
   var today = new Date();
   let dd = today.getDate();
   let mm = today.getMonth()  +1;
