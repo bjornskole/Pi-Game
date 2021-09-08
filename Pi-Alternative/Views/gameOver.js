@@ -11,3 +11,26 @@ let resetDecimalsStr = function () {
   pi.decimalsStr = "";
   console.log(pi.decimalsStr);
 };
+
+let gamescore = 5
+
+function saveData() {
+  var today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth()  +1;
+  let yyyy = today.getFullYear();
+  if (dd <10) {
+    dd = '0' + dd;
+  }
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  var today = dd + '/' + mm + '/' + yyyy;
+
+  //extract playerId from model.main.playerName
+  let curplayerdata = model.data.players.find(player=>player.playerName===model.main.playerName);
+  let playerId = curplayerdata.playerId;
+
+  let playedGame = {date: today, score: gamescore, "playerId": playerId, "gamemode": model.gameModes.selected};
+  model.data.gamesPlayed.push(playedGame)
+};

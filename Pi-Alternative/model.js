@@ -7,7 +7,7 @@ const model = {
     pages: ["main", "gameMode", "game", "leaderboard", "statistics"],
   },
   main: {
-    playerName: "fdgfdg", //onChange check if player exists then update selectedPlayer and generate player object in db
+    playerName: "Asbjorn", //onChange check if player exists then update selectedPlayer and generate player object in db
   },
   globals: {
     selectedPlayer: "", //populate with model.inputFields.main.playerName, manipulate with <- -> stats-page
