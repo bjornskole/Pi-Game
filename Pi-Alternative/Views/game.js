@@ -7,6 +7,7 @@ let Practice = function () {
   return `<div>Game Mode: Practice</div>
   <div>${pi.decimalsStr}</div>
   <input id="inputBox" oninput="checkAnswer(this.value, Practice)"/>
+  <button onclick="checkAnswer(this.value, 'GameOver')">End game</button>
   `;
 };
 
