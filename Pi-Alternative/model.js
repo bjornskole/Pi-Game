@@ -13,6 +13,7 @@ const model = {
     selectedPlayer: "", //populate with model.inputFields.main.playerName, manipulate with <- -> stats-page
   },
   game: {
+    life: 3,
     feedback: "",
     Input: "",
     piHolder: {
