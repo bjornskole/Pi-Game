@@ -31,7 +31,7 @@ function saveData() {
   //extract playerId from model.main.playerName
   let curplayerdata = model.data.players.find(player=>player.playerName===model.main.playerName);
   let playerId = curplayerdata.playerId;
-  //push all playedGame to gamesPlayed array
+  //create playedGame, push to gamesPlayed array
   let playedGame = {date: today, score: gamescore, "playerId": playerId, "gamemode": model.gameModes.selected};
   model.data.gamesPlayed.push(playedGame)
 };
