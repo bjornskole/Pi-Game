@@ -1,6 +1,7 @@
 let gameOver = function () {
   saveData();
   resetPi();
+  resetGameVal();
   return `
     <h1>GAME OVER!</h1>
     <div>Your score was: ${playedGame.score}</div>
@@ -15,6 +16,17 @@ let resetPi = function () {
   pi.i = 2n;
   pi.decimalsStr = "";
 };
+
+function resetGameVal() {
+  ref = model.game;
+  ref.Input = "";
+  ref.feedback = "";
+  ref.piHolder.tmpY = "";
+  ref.piHolder.tmpR = "";
+  ref.piHolder.tmpT = "";
+  ref.piHolder.tmpI = "";
+}
+
 //temp value to make saveData() add an actual value, remove/replace if needed
 
 let playedGame;

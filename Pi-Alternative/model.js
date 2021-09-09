@@ -12,7 +12,16 @@ const model = {
   globals: {
     selectedPlayer: "", //populate with model.inputFields.main.playerName, manipulate with <- -> stats-page
   },
-  gameInput: {},
+  game: {
+    feedback: "",
+    Input: "",
+    piHolder: {
+      tmpY: null,
+      tmpR: null,
+      tmpT: null,
+      tmpI: null,
+    },
+  },
   gameModes: {
     selected: "Practice",
     mode: ["Practice", "Normal"], //++ -- on <- ->  buttons
