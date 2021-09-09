@@ -17,6 +17,8 @@ let resetPi = function () {
 
 let gamescore = 5; //temp value to make saveData() add an actual value, remove/replace if needed
 
+var playedGame;
+
 function saveData() {
   //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
   var today = new Date();
@@ -37,7 +39,7 @@ function saveData() {
   );
   let playerId = curplayerdata.playerId;
   //create playedGame, push to gamesPlayed array
-  let playedGame = {
+  playedGame = {
     date: today,
     score: gamescore,
     playerId: playerId,
