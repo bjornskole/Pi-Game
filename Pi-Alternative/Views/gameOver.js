@@ -1,9 +1,10 @@
 let gameOver = function () {
+  saveData();
+  resetPi();
   return `
     <h1>GAME OVER!</h1>
-    <div>Your score was: ${pi.decimalsStr.length - 1}</div>
+    <div>Your score was: ${playedGame.score}</div>
     <button onclick="changeView(gameboardHTML)">Play Again!</button>
-${resetPi()}
     `;
 };
 
@@ -14,12 +15,12 @@ let resetPi = function () {
   pi.i = 2n;
   pi.decimalsStr = "";
 };
+//temp value to make saveData() add an actual value, remove/replace if needed
 
-let gamescore = 5; //temp value to make saveData() add an actual value, remove/replace if needed
-
-var playedGame;
+let playedGame;
 
 function saveData() {
+  let gamescore = pi.decimalsStr.length - 1;
   //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
   var today = new Date();
   let dd = today.getDate();
