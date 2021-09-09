@@ -17,11 +17,16 @@ let Normal = function () {
 <input id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
 `;
 };
+
 function checkAnswer(val, mode) {
   pi.get(pi.decimalsStr.length);
   console.log(pi.decimalsStr);
   switch (
-    val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
+    mode === Practice
+      ? mode
+      : val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)
+      ? mode
+      : "GameOver"
   ) {
     case Practice:
       changeView(mode);
