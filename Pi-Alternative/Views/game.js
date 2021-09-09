@@ -26,16 +26,8 @@ function checkAnswer(val, mode) {
   pi.get(pi.decimalsStr.length);
   console.log(pi.decimalsStr);
   switch (
-    mode === Practice
-      ? mode
-      : val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)
-      ? mode
-      : "GameOver"
+    val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
   ) {
-    case Practice:
-      changeView(mode);
-      break;
-
     case Normal:
       changeView(mode);
       break;
