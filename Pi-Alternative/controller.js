@@ -55,6 +55,12 @@ function inputFocus(element) {
     case gameboardHTML:
       document.getElementById("inputBox").focus();
       break;
+    case Practice:
+      document.getElementById("inputBox").focus();
+      break;
+    case Normal:
+      document.getElementById("inputBox").focus();
+      break;
     default:
   }
 }
