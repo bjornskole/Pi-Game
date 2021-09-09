@@ -40,7 +40,6 @@ function setLeaderboardType(val) {
   tmp.sort(sortScore);
   if (tmp.length >= 10){
     for (let i = 0; i < 10; i++) {
-      console.log(tmp[i]);
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
@@ -49,7 +48,6 @@ function setLeaderboardType(val) {
   }
   else {
     for (let i = 0; i < tmp.length; i++) {
-      console.log(tmp[i]);
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
