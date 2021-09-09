@@ -19,7 +19,7 @@ function changeView(element) {
 
 function backBtn() {
   changeView(mainView);
-  resetDecimalsStr();
+  resetPi();
 }
 
 function setLeaderboardType(val) {

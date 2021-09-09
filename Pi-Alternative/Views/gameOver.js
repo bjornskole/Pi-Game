@@ -1,7 +1,7 @@
 let gameOver = function () {
   return `
     <h1>GAME OVER!</h1>
-    <div>Your score was: ${pi.decimalsStr.length}</div>
+    <div>Your score was: ${pi.decimalsStr.length - 1}</div>
     <button onclick="changeView(gameboardHTML)">Play Again!</button>
 ${resetPi()}
     `;
