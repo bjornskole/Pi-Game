@@ -1,4 +1,3 @@
-// 
 let gameOver = function () {
   saveData();
   resetPi();
@@ -28,7 +27,6 @@ function resetGameVal() {
   model.game.life = 3;
 }
 
-//temp value to make saveData() add an actual value, remove/replace if needed
 
 function saveData() {
   let gamescore = pi.decimalsStr.length - 1;
