@@ -20,6 +20,7 @@ function changeView(element) {
 function backBtn() {
   changeView(mainView);
   resetPi();
+  resetGameVal();
 }
 
 function setLeaderboardType(val) {
