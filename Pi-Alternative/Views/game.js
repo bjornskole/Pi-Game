@@ -5,6 +5,7 @@ let gameboardHTML = function () {
 
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
+  <div>You have ${model.game.life} life left</div>
   <div>${model.game.feedback}</div>
   <div>You entered: ${model.game.Input}</div>
   <div>Correct Pi is:${pi.decimalsStr}</div>
@@ -44,16 +45,23 @@ function checkPractice(val, mode) {
 
   model.game.Input += val;
   if (val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)) {
-    model.game.feedback = "Correct!, do you know the next one too?";
+    model.game.feedback =
+      "<div style='color:green;'>Correct!, do you know the next one too?</div>";
     console.log("correct");
     changeView(mode);
+  } else if (model.game.life == 1) {
+    changeView(gameOver);
   } else if (val > parseInt(pi.decimalsStr[pi.decimalsStr.length - 1])) {
-    model.game.feedback = "Your number was to high";
+    model.game.feedback =
+      "<div style='color:red;'>Your number was to high</div>";
     console.log("High");
+    model.game.life -= 1;
     changeView(mode);
   } else {
-    model.game.feedback = "Your number was to low";
+    model.game.feedback =
+      "<div style='color:red;'>Your number was to low</div>";
     console.log("Low");
+    model.game.life -= 1;
     changeView(mode);
   }
 }
