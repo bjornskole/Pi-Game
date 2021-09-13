@@ -19,13 +19,13 @@ let resetPi = function () {
 };
 
 function resetGameVal() {
-  ref = model.game;
-  ref.Input = "";
-  ref.feedback = "";
-  ref.piHolder.tmpY = "";
-  ref.piHolder.tmpR = "";
-  ref.piHolder.tmpT = "";
-  ref.piHolder.tmpI = "";
+  model.game.Input = "";
+  model.game.feedback = "";
+  model.game.piHolder.tmpY = "";
+  model.game.piHolder.tmpR = "";
+  model.game.piHolder.tmpT = "";
+  model.game.piHolder.tmpI = "";
+  model.game.life = 3;
 }
 
 //temp value to make saveData() add an actual value, remove/replace if needed
