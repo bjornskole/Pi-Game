@@ -1,3 +1,4 @@
+// 
 let gameOver = function () {
   saveData();
   resetPi();
@@ -29,8 +30,6 @@ function resetGameVal() {
 
 //temp value to make saveData() add an actual value, remove/replace if needed
 
-let playedGame;
-
 function saveData() {
   let gamescore = pi.decimalsStr.length - 1;
   //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
@@ -47,9 +46,20 @@ function saveData() {
   var today = dd + "/" + mm + "/" + yyyy;
 
   //extract playerId from model.main.playerName
+  //Add if player doesn't exist then create player
   let curplayerdata = model.data.players.find(
     (player) => player.playerName === model.main.playerName
   );
+  //adds new user if it does not exist
+  if (curplayerdata === undefined){
+    let newuser = {
+      playerId: model.data.players.length +1,
+      playerName: model.main.playerName,
+      highscore: gamescore,
+    }
+    curplayerdata = newuser;
+    model.data.players.push(newuser);
+  }
   let playerId = curplayerdata.playerId;
   //create playedGame, push to gamesPlayed array
   playedGame = {
