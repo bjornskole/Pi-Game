@@ -35,6 +35,7 @@ function setLeaderboardType(val) {
   function sortScore(a, b) {
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
+    if (a.score === b.score) return b.date - a.date;
     return 0;
   }
   tmp.sort(sortScore);
