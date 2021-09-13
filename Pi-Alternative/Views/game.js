@@ -5,7 +5,7 @@ let gameboardHTML = function () {
 
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
-  <div>Lives left ${model.game.life}</div>
+  <div>Lives left: ${model.game.life}</div>
   <div>${model.game.feedback}</div>
   <div>You entered: ${model.game.Input}</div>
   <div>Correct Pi is:${pi.decimalsStr}</div>
