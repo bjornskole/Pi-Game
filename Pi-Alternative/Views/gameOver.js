@@ -50,6 +50,7 @@ function saveData() {
   let curplayerdata = model.data.players.find(
     (player) => player.playerName === model.main.playerName
   );
+  //adds new user if it does not exist
   if (curplayerdata === undefined){
     let newuser = {
       playerId: model.data.players.length +1,
