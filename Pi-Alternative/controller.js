@@ -27,32 +27,34 @@ function setLeaderboardType(val) {
   let tmpTxt = "";
   let names = [];
   model.data.gamesPlayed.sort(sortScore);
-    for (let i = 0; i < model.data.gamesPlayed.length; i++) {
-      if (model.data.gamesPlayed[i].gamemode === val) {
-        tmp.push(model.data.gamesPlayed[i]);
-      }
+  for (let i = 0; i < model.data.gamesPlayed.length; i++) {
+    if (model.data.gamesPlayed[i].gamemode === val) {
+      tmp.push(model.data.gamesPlayed[i]);
     }
+  }
   function sortScore(a, b) {
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
-    if (a.score === b.score) return b.date - a.date;
-    return 0;
+    if (a.score === b.score) {
+      if (a.time > b.time) return 1;
+      if (a.time < b.time) return -1;
+      if (a.time === b.time) return 0;
+    }
   }
   tmp.sort(sortScore);
-  if (tmp.length >= 10){
+  if (tmp.length >= 10) {
     for (let i = 0; i < 10; i++) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
+      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].time} ${tmp[i].score}<br>`;
     }
-  }
-  else {
+  } else {
     for (let i = 0; i < tmp.length; i++) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].score}<br>`;
+      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].time} ${tmp[i].score}<br>`;
     }
   }
   return `${tmpTxt}`;
