@@ -38,7 +38,11 @@ function setLeaderboardType(val) {
     if (a.score === b.score) {
       if (a.time > b.time) return 1;
       if (a.time < b.time) return -1;
-      if (a.time === b.time) return 0;
+      if (a.time === b.time) {
+        if (a.date > b.date) return 1;
+        if (a.date < b.date) return -1;
+        return 0;
+      }
     }
   }
   tmp.sort(sortScore);
