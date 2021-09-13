@@ -46,7 +46,7 @@ function checkPractice(val, mode) {
   pi.get(pi.decimalsStr.length);
   console.log(pi.decimalsStr);
 
-  model.game.Input += val;
+  model.game.Input = val;
   if (val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1)) {
     model.game.feedback =
       "<div style='color:green;'>Correct!, do you know the next one too?</div>";
