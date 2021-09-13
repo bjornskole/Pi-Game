@@ -53,19 +53,22 @@ function saveData() {
   //adds new user if it does not exist
   if (curplayerdata === undefined){
     let newuser = {
-      playerId: model.data.players.length +1,
+      playerId: model.data.players.length,
       playerName: model.main.playerName,
       highscore: gamescore,
     }
     curplayerdata = newuser;
     model.data.players.push(newuser);
   }
-  let playerId = curplayerdata.playerId;
+  //checks if score is higher than highscore. If so, updates highscore
+  if (curplayerdata.highscore < gamescore){
+    model.data.players[curplayerdata.playerId].highscore = gamescore;
+  }
   //create playedGame, push to gamesPlayed array
   playedGame = {
     date: today,
     score: gamescore,
-    playerId: playerId,
+    playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
   };
   model.data.gamesPlayed.push(playedGame);
