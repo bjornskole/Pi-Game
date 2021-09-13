@@ -17,6 +17,7 @@ let Practice = function () {
 let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
+<div>Current score: ${model.game.Input.length}</div>
 <div>Pi:${pi.decimalsStr}</div>
 <input type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
 `;
@@ -26,6 +27,7 @@ let Normal = function () {
 function checkAnswer(val, mode) {
   pi.get(pi.decimalsStr.length);
   console.log(pi.decimalsStr);
+  model.game.Input += val;
   switch (
     val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
   ) {
