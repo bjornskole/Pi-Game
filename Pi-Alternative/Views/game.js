@@ -42,6 +42,7 @@ function checkAnswer(val, mode) {
 }
 
 function checkPractice(val, mode) {
+  setPiState();
   pi.get(pi.decimalsStr.length);
   console.log(pi.decimalsStr);
 
@@ -58,12 +59,33 @@ function checkPractice(val, mode) {
       "<div style='color:red;'>Your number was to high</div>";
     console.log("High");
     model.game.life -= 1;
+    oldPiState();
     changeView(mode);
   } else {
     model.game.feedback =
       "<div style='color:red;'>Your number was to low</div>";
     console.log("Low");
     model.game.life -= 1;
+    oldPiState();
     changeView(mode);
   }
+}
+
+function setPiState() {
+  if (pi.decimalsStr.length <= 0) {
+    return;
+  } else {
+    model.game.piHolder.tmpQ = pi.q;
+    model.game.piHolder.tmpR = pi.r;
+    model.game.piHolder.tmpT = pi.t;
+    model.game.piHolder.tmpI = pi.i;
+    model.game.piHolder.decimalsStr = pi.decimalsStr;
+  }
+}
+function oldPiState() {
+  pi.q = model.game.piHolder.tmpQ;
+  pi.r = model.game.piHolder.tmpR;
+  pi.t = model.game.piHolder.tmpT;
+  pi.i = model.game.piHolder.tmpI;
+  pi.decimalsStr = model.game.piHolder.decimalsStr;
 }
