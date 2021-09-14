@@ -55,17 +55,27 @@ function setLeaderboardType(val) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].time} ${tmp[i].score}<br>`;
+      tmpTxt += `<tr><td>${names}</td> <td>${tmp[i].date}</td> <td>${tmp[i].time}</td> <td>${tmp[i].score}</td></tr>`;
     }
   } else {
     for (let i = 0; i < tmp.length; i++) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `${names} ${tmp[i].date} ${tmp[i].time} ${tmp[i].score}<br>`;
+      tmpTxt += `<tr><td>${names}</td> <td>${tmp[i].date}</td> <td>${tmp[i].time}</td> <td>${tmp[i].score}</td></tr>`;
     }
   }
-  return `${tmpTxt}`;
+  return `
+  <table border="1">
+    <tr>
+      <th>Player</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Score</th>
+    </tr>
+    ${tmpTxt}
+  </table>
+  `;
 }
 
 function inputFocus(element) {
