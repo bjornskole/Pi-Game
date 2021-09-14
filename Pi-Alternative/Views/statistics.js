@@ -13,7 +13,7 @@ let statisticsHTML = () => `
    `;
 let Top5 = function () {
   return `Top5<br>
-  <input type="text" list="Playernames" />
+  <input onclick="this.value = ''" type="text" list="Playernames" value="${model.main.playerName}"/>
     <datalist id="Playernames">
     ${model.statistics.playerNames}
     </datalist>
