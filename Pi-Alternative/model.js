@@ -31,6 +31,7 @@ const model = {
   statistics: {
     type: ["Top5", "Graph"],
     selected: "Top5",
+    playerNames: [],
   },
   data: {
     // leaderboard: { List: [] },
