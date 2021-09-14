@@ -57,7 +57,7 @@ const model = {
       },
       {
         date: "2021-09-14",
-        time: "00:00:13:34:23",
+        time: "00:13:34:23",
         score: 18,
         playerId: 1,
         gamemode: "Practice",
