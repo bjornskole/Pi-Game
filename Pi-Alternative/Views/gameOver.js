@@ -5,8 +5,7 @@ let gameOver = function () {
   resetGameVal();
   return `
     <h1>GAME OVER!</h1>
-    <div>Time: ${playedGame.time.slice(3)}</div>
-    <div>Time format: mm:ss.ms</div>
+    <div>Time: ${playedGame.time}</div>
     <div>Score: ${playedGame.score}</div>
     <div>The next digit was: ${nextDigit}</div>
     <br><button onclick="StartGame()">Play Again!</button>

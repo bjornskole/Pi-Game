@@ -27,7 +27,7 @@ function setLeaderboardType(val) {
   let tmp = [];
   let tmpTxt = "";
   let names = [];
-  let format = 'dd mm yyyy';
+  let format = "dd mm yyyy";
   model.data.gamesPlayed.sort(sortScore);
   for (let i = 0; i < model.data.gamesPlayed.length; i++) {
     if (model.data.gamesPlayed[i].gamemode === val) {
@@ -43,8 +43,16 @@ function setLeaderboardType(val) {
       if (a.time > b.time) return 1;
       if (a.time < b.time) return -1;
       if (a.time === b.time) {
-        if (a2.toUTCString().slice(0,format.length) > b2.toUTCString().slice(0,format.length)) return 1;
-        if (a2.toUTCString().slice(0,format.length) < b2.toUTCString().slice(0,format.length)) return -1;
+        if (
+          a2.toUTCString().slice(0, format.length) >
+          b2.toUTCString().slice(0, format.length)
+        )
+          return 1;
+        if (
+          a2.toUTCString().slice(0, format.length) <
+          b2.toUTCString().slice(0, format.length)
+        )
+          return -1;
         return 0;
       }
     }
@@ -121,7 +129,6 @@ function gamemodeForward(view) {
   changeView(view);
 }
 
-
 function StartGame() {
   sWatch.ResetTimer();
   sWatch.StartTimer();
@@ -134,36 +141,35 @@ class StopWatch {
     this.hr = 0;
     this.min = 0;
     this.sec = 0;
-    this.miliSec = 0,
-    this.stoptime = true;
+    (this.miliSec = 0), (this.stoptime = true);
     this.timer = "00:00:00:00";
   }
 
   StartTimer() {
     if (this.stoptime == true) {
       this.stoptime = false;
-          this.timerCycle();
-      }
+      this.timerCycle();
+    }
   }
   StopTimer() {
     if (this.stoptime == false) {
       this.stoptime = true;
     }
   }
-  
+
   timerCycle() {
-      if (this.stoptime == false) {
-        this.miliSec = parseInt(this.miliSec);
-        this.sec = parseInt(this.sec);
-        this.min = parseInt(this.min);
-        this.hr = parseInt(this.hr);
-  
-        this.miliSec = this.miliSec + 1;
-        
-        if (this.miliSec == 60) {
-          this.sec = this.sec + 1;
-          this.miliSec = 0;
-        }  
+    if (this.stoptime == false) {
+      this.miliSec = parseInt(this.miliSec);
+      this.sec = parseInt(this.sec);
+      this.min = parseInt(this.min);
+      this.hr = parseInt(this.hr);
+
+      this.miliSec = this.miliSec + 1;
+
+      if (this.miliSec == 60) {
+        this.sec = this.sec + 1;
+        this.miliSec = 0;
+      }
       if (this.sec == 60) {
         this.min = this.min + 1;
         this.sec = 0;
@@ -176,21 +182,21 @@ class StopWatch {
         this.miliSec = 0;
       }
       if (this.miliSec < 10 || this.miliSec == 0) {
-        this.miliSec = '0' + this.miliSec;
+        this.miliSec = "0" + this.miliSec;
       }
       if (this.sec < 10 || this.sec == 0) {
-        this.sec = '0' + this.sec;
+        this.sec = "0" + this.sec;
       }
       if (this.min < 10 || this.min == 0) {
-        this.min = '0' + this.min;
+        this.min = "0" + this.min;
       }
-      if (this.hr < 10 ||this.hr == 0) {
-        this.hr = '0' + this.hr;
+      if (this.hr < 10 || this.hr == 0) {
+        this.hr = "0" + this.hr;
       }
-  
-      this.timer = `${this.hr}:${this.min}:${this.sec}:${this.miliSec}`;
-      let element = document.querySelector("#timerDiv")
-      element ? element.innerHTML = this.timer : null
+
+      this.timer = `${this.min}:${this.sec}:${this.miliSec}`;
+      let element = document.querySelector("#timerDiv");
+      element ? (element.innerHTML = this.timer) : null;
       setTimeout(() => this.timerCycle(), 10);
     }
   }
@@ -200,9 +206,7 @@ class StopWatch {
     this.sec = 0;
     this.miliSec = 0;
     this.min = 0;
-    this.timer = '00:00:00:00';
-}
+    this.timer = "00:00:00:00";
+  }
 }
 let sWatch = new StopWatch();
-
-
