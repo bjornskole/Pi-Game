@@ -70,7 +70,7 @@ function setLeaderboardType(val) {
     <tr>
       <th>Player</th>
       <th>Date</th>
-      <th>Time <span style="font-weight: lighter; font-size: 12px;">mm:ss:ms</span></th>
+      <th title="mm:ss:ms">Time</th>
       <th>Score</th>
     </tr>
     ${tmpTxt}
