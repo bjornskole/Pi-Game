@@ -66,7 +66,7 @@ function setLeaderboardType(val) {
     }
   }
   return `
-  <table border="1">
+  <table>
     <tr>
       <th>Player</th>
       <th>Date</th>
