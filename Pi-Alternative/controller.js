@@ -27,7 +27,6 @@ function setLeaderboardType(val) {
   let tmp = [];
   let tmpTxt = "";
   let names = [];
-  let format = "dd mm yyyy";
   model.data.gamesPlayed.sort(sortScore);
   for (let i = 0; i < model.data.gamesPlayed.length; i++) {
     if (model.data.gamesPlayed[i].gamemode === val) {
