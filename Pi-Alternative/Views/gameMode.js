@@ -4,5 +4,5 @@ let gameHTML = () => `
       <option value="${model.gameModes.mode[0]}">${model.gameModes.mode[0]}</option>
       <option value="${model.gameModes.mode[1]}">${model.gameModes.mode[1]}</option>
    </select>
-   <button onclick="changeView(gameboardHTML)">Start Game</button>
+   <button onclick="StartGame()">Start Game</button>
    `;

@@ -5,7 +5,7 @@ let gameOver = function () {
   return `
     <h1>GAME OVER!</h1>
     <div>Your score was: ${playedGame.score}</div>
-    <button onclick="changeView(gameboardHTML)">Play Again!</button>
+    <button onclick="StartGame()">Play Again!</button>
     `;
 };
 
@@ -29,6 +29,7 @@ function resetGameVal() {
 
 
 function saveData() {
+  sWatch.StopTimer();
   let gamescore = pi.decimalsStr.length - 1;
   //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
   var today = new Date();
@@ -68,6 +69,7 @@ function saveData() {
     score: gamescore,
     playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
+    time: sWatch.timer
   };
   model.data.gamesPlayed.push(playedGame);
 }

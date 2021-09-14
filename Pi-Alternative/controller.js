@@ -20,6 +20,7 @@ function changeView(element) {
 function backBtn() {
   changeView(mainView);
   resetPi();
+  resetGameVal();
 }
 
 function setLeaderboardType(val) {
@@ -116,3 +117,89 @@ function gamemodeForward(view) {
   );
   changeView(view);
 }
+
+
+function StartGame() {
+  sWatch.ResetTimer();
+  sWatch.StartTimer();
+  changeView(gameboardHTML);
+}
+
+/**Stop Watch */
+class StopWatch {
+  constructor() {
+    this.hr = 0;
+    this.min = 0;
+    this.sec = 0;
+    this.miliSec = 0,
+    this.stoptime = true;
+    this.timer = "00:00:00:00";
+  }
+
+  StartTimer() {
+    if (this.stoptime == true) {
+      this.stoptime = false;
+          this.timerCycle();
+      }
+  }
+  StopTimer() {
+    if (this.stoptime == false) {
+      this.stoptime = true;
+    }
+  }
+  
+  timerCycle() {
+      if (this.stoptime == false) {
+        this.miliSec = parseInt(this.miliSec);
+        this.sec = parseInt(this.sec);
+        this.min = parseInt(this.min);
+        this.hr = parseInt(this.hr);
+  
+        this.miliSec = this.miliSec + 1;
+        
+        if (this.miliSec == 60) {
+          this.sec = this.sec + 1;
+          this.miliSec = 0;
+        }  
+      if (this.sec == 60) {
+        this.min = this.min + 1;
+        this.sec = 0;
+        this.miliSec = 0;
+      }
+      if (this.min == 60) {
+        this.hr = this.hr + 1;
+        this.min = 0;
+        this.sec = 0;
+        this.miliSec = 0;
+      }
+      if (this.miliSec < 10 || this.miliSec == 0) {
+        this.miliSec = '0' + this.miliSec;
+      }
+      if (this.sec < 10 || this.sec == 0) {
+        this.sec = '0' + this.sec;
+      }
+      if (this.min < 10 || this.min == 0) {
+        this.min = '0' + this.min;
+      }
+      if (this.hr < 10 ||this.hr == 0) {
+        this.hr = '0' + this.hr;
+      }
+  
+      this.timer = `${this.hr}:${this.min}:${this.sec}:${this.miliSec}`;
+      let element = document.querySelector("#timerDiv")
+      element ? element.innerHTML = this.timer : null
+      setTimeout(() => this.timerCycle(), 10);
+    }
+  }
+  ResetTimer() {
+    this.stoptime = true;
+    this.hr = 0;
+    this.sec = 0;
+    this.miliSec = 0;
+    this.min = 0;
+    this.timer = '00:00:00:00';
+}
+}
+let sWatch = new StopWatch();
+
+
