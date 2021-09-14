@@ -6,7 +6,7 @@ let gameOver = function () {
   return `
     <h1>GAME OVER!</h1>
     <div>Time: ${playedGame.time.slice(3)}</div>
-    <div>Time format: mm:ss.SSS</div>
+    <div>Time format: mm:ss.ms</div>
     <div>Score: ${playedGame.score}</div>
     <div>The next digit was: ${nextDigit}</div>
     <br><button onclick="StartGame()">Play Again!</button>
