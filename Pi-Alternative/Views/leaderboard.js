@@ -7,7 +7,6 @@ let leaderboardHTML = () => `
   <button onclick="gamemodeBack(leaderboardHTML)"><-</button>
   ${model.gameModes.selected}
   <button onclick="gamemodeForward(leaderboardHTML)">-></button>
-  <div>Player Date Time Score</div>
   <div>${setLeaderboardType(model.gameModes.selected)}</div>
 `;
 
