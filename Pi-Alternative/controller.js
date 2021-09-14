@@ -35,24 +35,16 @@ function setLeaderboardType(val) {
     }
   }
   function sortScore(a, b) {
-    let a2 = new Date(a.date);
-    let b2 = new Date(b.date);
+    let a2 = new Date(a.date).toISOString();
+    let b2 = new Date(b.date).toISOString();
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
     if (a.score === b.score) {
       if (a.time > b.time) return 1;
       if (a.time < b.time) return -1;
       if (a.time === b.time) {
-        if (
-          a2.toUTCString().slice(0, format.length) >
-          b2.toUTCString().slice(0, format.length)
-        )
-          return 1;
-        if (
-          a2.toUTCString().slice(0, format.length) <
-          b2.toUTCString().slice(0, format.length)
-        )
-          return -1;
+        if (a2 > b2) return 1;
+        if (a2 < b2) return -1;
         return 0;
       }
     }
