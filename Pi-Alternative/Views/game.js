@@ -5,6 +5,7 @@ let gameboardHTML = function () {
 
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
+  <div>Highscore: </div>
   <div id="timerDiv"></div>
   <div>Lives left: ${model.game.life}</div>
   <div>${model.game.feedback}</div>
@@ -18,6 +19,7 @@ let Practice = function () {
 let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
+<div>Highscore: </div>
 <div id="timerDiv"></div>
 <div>Current score: ${model.game.Input.length}</div>
 <div>Pi:${pi.decimalsStr}</div>

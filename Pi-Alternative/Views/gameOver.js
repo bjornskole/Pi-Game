@@ -1,13 +1,14 @@
 let gameOver = function () {
+  let nextDigit = pi.decimalsStr.slice(-1);
   saveData();
   resetPi();
   resetGameVal();
   return `
     <h1>GAME OVER!</h1>
-
     <div>Time: ${playedGame.time.slice(3)}</div>
     <div>Time format: mm:ss.SSS</div>
     <div>Score: ${playedGame.score}</div>
+    <div>The next digit was: ${nextDigit}</div>
     <br><button onclick="StartGame()">Play Again!</button>
     `;
 };
@@ -29,23 +30,11 @@ function resetGameVal() {
   model.game.piHolder.tmpI = "";
   model.game.life = 3;
 }
-
 function saveData() {
   sWatch.StopTimer();
   let gamescore = pi.decimalsStr.length - 1;
-  //get current date formatted dd/mm/yyyy alternative = Date().toLocaleString().slice(4, 24);
-  var today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1;
-  let yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = "0" + dd;
-  }
-  if (mm < 10) {
-    mm = "0" + mm;
-  }
-  var today = dd + "/" + mm + "/" + yyyy;
-
+  //get current date
+  let today = new Date().toISOString().slice(0, 10);
   //extract playerId from model.main.playerName
   //If player doesn't exist then create player
   let curplayerdata = model.data.players.find(
@@ -67,8 +56,8 @@ function saveData() {
   }
   //create playedGame, push to gamesPlayed array
   playedGame = {
-    time: sWatch.timer,
     date: today,
+    time: sWatch.timer,
     score: gamescore,
     playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
