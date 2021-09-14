@@ -27,6 +27,7 @@ function setLeaderboardType(val) {
   let tmp = [];
   let tmpTxt = "";
   let names = [];
+  let format = 'dd mm yyyy';
   model.data.gamesPlayed.sort(sortScore);
   for (let i = 0; i < model.data.gamesPlayed.length; i++) {
     if (model.data.gamesPlayed[i].gamemode === val) {
@@ -34,14 +35,16 @@ function setLeaderboardType(val) {
     }
   }
   function sortScore(a, b) {
+    let a2 = new Date(a.date);
+    let b2 = new Date(b.date);
     if (a.score > b.score) return -1;
     if (a.score < b.score) return 1;
     if (a.score === b.score) {
       if (a.time > b.time) return 1;
       if (a.time < b.time) return -1;
       if (a.time === b.time) {
-        if (a.date > b.date) return 1;
-        if (a.date < b.date) return -1;
+        if (a2.toUTCString().slice(0,format.length) > b2.toUTCString().slice(0,format.length)) return 1;
+        if (a2.toUTCString().slice(0,format.length) < b2.toUTCString().slice(0,format.length)) return -1;
         return 0;
       }
     }
