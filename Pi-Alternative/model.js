@@ -30,6 +30,7 @@ const model = {
   },
   statistics: {
     type: ["Top5", "Graph"],
+    selected: "Top5",
   },
   data: {
     // leaderboard: { List: [] },
