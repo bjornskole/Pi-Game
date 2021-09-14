@@ -45,7 +45,7 @@ function saveData() {
   var today = dd + "/" + mm + "/" + yyyy;
 
   //extract playerId from model.main.playerName
-  //Add if player doesn't exist then create player
+  //If player doesn't exist then create player
   let curplayerdata = model.data.players.find(
     (player) => player.playerName === model.main.playerName
   );
@@ -65,11 +65,11 @@ function saveData() {
   }
   //create playedGame, push to gamesPlayed array
   playedGame = {
+    time: sWatch.timer,
     date: today,
     score: gamescore,
     playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
-    time: sWatch.timer,
   };
   model.data.gamesPlayed.push(playedGame);
 }
