@@ -3,10 +3,6 @@ function setPlayerName(val) {
   console.log(model.main.playerName);
 }
 
-// function setLeaderboardType(val) {
-//     model.
-// }
-
 function setGameMode(val) {
   model.gameModes.selected = val;
 }
