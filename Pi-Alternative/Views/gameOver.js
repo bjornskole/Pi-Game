@@ -4,7 +4,7 @@ let gameOver = function () {
   resetGameVal();
   return `
     <h1>GAME OVER!</h1>
-    <div>Time: ${playedGame.time}</div>
+    <div>Time: ${playedGame.time.slice(playedGame.time.lastIndexOf(0))}</div>
     <div>Score: ${playedGame.score}</div>
     <br><button onclick="StartGame()">Play Again!</button>
     `;
