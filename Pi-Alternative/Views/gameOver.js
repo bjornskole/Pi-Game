@@ -4,8 +4,9 @@ let gameOver = function () {
   resetGameVal();
   return `
     <h1>GAME OVER!</h1>
-    <div>Your score was: ${playedGame.score}</div>
-    <button onclick="StartGame()">Play Again!</button>
+    <div>Time: ${playedGame.time}</div>
+    <div>Score: ${playedGame.score}</div>
+    <br><button onclick="StartGame()">Play Again!</button>
     `;
 };
 
@@ -26,7 +27,6 @@ function resetGameVal() {
   model.game.piHolder.tmpI = "";
   model.game.life = 3;
 }
-
 
 function saveData() {
   sWatch.StopTimer();
@@ -50,17 +50,17 @@ function saveData() {
     (player) => player.playerName === model.main.playerName
   );
   //adds new user if it does not exist
-  if (curplayerdata === undefined){
+  if (curplayerdata === undefined) {
     let newuser = {
       playerId: model.data.players.length,
       playerName: model.main.playerName,
       highscore: gamescore,
-    }
+    };
     curplayerdata = newuser;
     model.data.players.push(newuser);
   }
   //checks if score is higher than highscore. If so, updates highscore
-  if (curplayerdata.highscore < gamescore){
+  if (curplayerdata.highscore < gamescore) {
     model.data.players[curplayerdata.playerId].highscore = gamescore;
   }
   //create playedGame, push to gamesPlayed array
@@ -69,7 +69,7 @@ function saveData() {
     score: gamescore,
     playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
-    time: sWatch.timer
+    time: sWatch.timer,
   };
   model.data.gamesPlayed.push(playedGame);
 }
