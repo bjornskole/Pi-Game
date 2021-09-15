@@ -39,6 +39,7 @@ const model = {
     // leaderboard: { List: [] },
     gamesPlayed: [
       {
+        gameId: 0,
         date: "2021-09-14",
         time: "00:34:22",
         score: 18,
@@ -46,6 +47,7 @@ const model = {
         gamemode: "Normal",
       },
       {
+        gameId: 1,
         date: "2021-07-14",
         time: "00:13:34",
         score: 18,
@@ -53,6 +55,7 @@ const model = {
         gamemode: "Practice",
       },
       {
+        gameId: 2,
         date: "2021-08-11",
         time: "00:13:34",
         score: 7,
@@ -60,6 +63,7 @@ const model = {
         gamemode: "Normal",
       },
       {
+        gameId: 3,
         date: "2021-09-14",
         time: "13:34:23",
         score: 18,
@@ -67,6 +71,7 @@ const model = {
         gamemode: "Practice",
       },
       {
+        gameId: 4,
         date: "2021-09-14",
         time: "00:13:34",
         score: 10,
@@ -79,22 +84,13 @@ const model = {
         playerId: 1,
         playerName: "Adrian",
         highscore: 100,
-        // gamesPlayed: {
-        //   Normal: [
-        //     { date: "12/08/21", score: 18 },
-        //     { date: "12/08/21", score: 17 },
-        //   ], // top 5 er fem første i liste
-        //   Practice: [],
-        // },
+        gamesPlayed: [],
       },
       {
         playerId: 2,
         playerName: "Asbjorn",
         highscore: 200,
-        // gamesPlayed: {
-        //   Normal: [],
-        //   Practice: [],
-        // },
+        gamesPlayed: [],
       },
     ],
   },

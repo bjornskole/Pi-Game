@@ -46,6 +46,7 @@ function saveData() {
       playerId: model.data.players.length,
       playerName: model.main.playerName,
       highscore: gamescore,
+      playedGames: [],
     };
     curplayerdata = newuser;
     model.data.players.push(newuser);
@@ -56,11 +57,14 @@ function saveData() {
   }
   //create playedGame, push to gamesPlayed array
   playedGame = {
+    gameId: model.data.gamesPlayed.length +1,
     date: today,
     time: sWatch.timer,
     score: gamescore,
     playerId: curplayerdata.playerId,
     gamemode: model.gameModes.selected,
   };
+  model.data.players[curplayerdata.playerId].gamesPlayed.push(gameId);
+
   model.data.gamesPlayed.push(playedGame);
 }
