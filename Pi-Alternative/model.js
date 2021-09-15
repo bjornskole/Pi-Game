@@ -81,13 +81,13 @@ const model = {
     ],
     players: [
       {
-        playerId: 1,
+        playerId: 0,
         playerName: "Adrian",
         highscore: 100,
         gamesPlayed:{},
       },
       {
-        playerId: 2,
+        playerId: 1,
         playerName: "Asbjorn",
         highscore: 200,
         gamesPlayed: {},
