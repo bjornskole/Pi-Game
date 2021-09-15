@@ -1,6 +1,4 @@
 let statisticsHTML = () => `
-    ${(model.statistics.playerNames = [])}
-    ${genPlayerList()}
    <div>statistics</div>
    <select onchange="setStatMode(this.value)">
         <option selected="${model.statistics.selected}">${
@@ -13,9 +11,11 @@ let statisticsHTML = () => `
    `;
 let Top5 = function () {
   return `Top5<br>
-  <input onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${model.main.playerName}"/>
+  <input onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
+    model.main.playerName
+  }"/>
     <datalist id="Playernames">
-    ${model.statistics.playerNames}
+    ${genPlayerList()}
     </datalist><br>
     ${model.statistics.top5list}
     `;
@@ -54,9 +54,11 @@ function setStatMode(val) {
 }
 
 function genPlayerList() {
+  model.statistics.playerNames = [];
   for (let index = 0; index < model.data.players.length; index++) {
     model.statistics.playerNames += `<Option>${model.data.players[index].playerName}</Option>`;
   }
+  return model.statistics.playerNames;
 }
 
 function setSelectedPlayer(val) {
