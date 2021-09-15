@@ -46,7 +46,7 @@ function saveData() {
       playerId: model.data.players.length,
       playerName: model.main.playerName,
       highscore: gamescore,
-      playedGames: [],
+      gamesPlayed: [],
     };
     curplayerdata = newuser;
     model.data.players.push(newuser);
@@ -55,9 +55,10 @@ function saveData() {
   if (curplayerdata.highscore < gamescore) {
     model.data.players[curplayerdata.playerId].highscore = gamescore;
   }
+  let gameId = model.data.gamesPlayed.length +1;
   //create playedGame, push to gamesPlayed array
   playedGame = {
-    gameId: model.data.gamesPlayed.length +1,
+    gameId: gameId,
     date: today,
     time: sWatch.timer,
     score: gamescore,
