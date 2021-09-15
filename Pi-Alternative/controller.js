@@ -18,6 +18,21 @@ function backBtn() {
   resetPi();
   resetGameVal();
 }
+function sortScore(a, b) {
+  let a2 = new Date(a.date).toISOString();
+  let b2 = new Date(b.date).toISOString();
+  if (a.score > b.score) return -1;
+  if (a.score < b.score) return 1;
+  if (a.score === b.score) {
+    if (a.time > b.time) return 1;
+    if (a.time < b.time) return -1;
+    if (a.time === b.time) {
+      if (a2 > b2) return 1;
+      if (a2 < b2) return -1;
+      return 0;
+    }
+  }
+}
 
 function setLeaderboardType(val) {
   let tmp = [];
@@ -29,21 +44,7 @@ function setLeaderboardType(val) {
       tmp.push(model.data.gamesPlayed[i]);
     }
   }
-  function sortScore(a, b) {
-    let a2 = new Date(a.date).toISOString();
-    let b2 = new Date(b.date).toISOString();
-    if (a.score > b.score) return -1;
-    if (a.score < b.score) return 1;
-    if (a.score === b.score) {
-      if (a.time > b.time) return 1;
-      if (a.time < b.time) return -1;
-      if (a.time === b.time) {
-        if (a2 > b2) return 1;
-        if (a2 < b2) return -1;
-        return 0;
-      }
-    }
-  }
+
   tmp.sort(sortScore);
   if (tmp.length >= 10) {
     for (let i = 0; i < 10; i++) {
