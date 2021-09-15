@@ -5,7 +5,7 @@ let gameboardHTML = function () {
 
 let Practice = function () {
   return `<div>Game Mode: Practice</div>
-  <div>Highscore for Normal: ${checkPlayerHighScore()} </div>
+  <div>Highscore for Normal: ${checkPlayerHighScore("preGame")} </div>
   <div id="timerDiv"></div>
   <div>Lives left: ${model.game.life}</div>
   <div>${model.game.feedback}</div>
@@ -19,7 +19,7 @@ let Practice = function () {
 let Normal = function () {
   return `
 <div>Game Mode: Normal</div>
-<div>Highscore: ${checkPlayerHighScore()} </div>
+<div>Highscore: ${checkPlayerHighScore("preGame")} </div>
 <div id="timerDiv"></div>
 <div>Current score: ${model.game.Input.length}</div>
 <div>Pi:${pi.decimalsStr}</div>
@@ -34,7 +34,7 @@ function checkAnswer(val, mode) {
   console.log(pi.decimalsStr);
   model.game.Input += val;
   switch (
-    val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
+  val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
   ) {
     case Normal:
       changeView(mode);
@@ -95,15 +95,27 @@ function oldPiState() {
   pi.decimalsStr = model.game.piHolder.decimalsStr;
 }
 
-function checkPlayerHighScore(){
+function checkPlayerHighScore(gamestate) {
   let curplayerdata = model.data.players.find(
     (player) => player.playerName === model.main.playerName
   );
-
-  if (curplayerdata === undefined){
-    return "You have not played any games";
+  if (gamestate == "preGame") {
+    if (curplayerdata === undefined) {
+      return "You have not played any games";
+    }
+    else {
+      return curplayerdata.highscore;
+    }
   }
-  else {
-    return curplayerdata.highscore;
+  else if (gamestate == "gameEnd") {
+    if (curplayerdata === undefined) {
+      return playedGame.score;
+    }
+    else if (playedGame.score > curplayerdata.highscore){
+      return "You achieved a new highscore of " + playedGame.score + "!";
+    }
+    else {
+      return curplayerdata.highscore;
+    } 
   }
 }
