@@ -55,13 +55,36 @@ function setStatMode(val) {
 
 function genPlayerList() {
   model.statistics.playerNames = [];
-  for (let index = 0; index < model.data.players.length; index++) {
-    model.statistics.playerNames += `<Option>${model.data.players[index].playerName}</Option>`;
+  for (let i = 0; i < model.data.players.length; i++) {
+    model.statistics.playerNames += `<Option>${model.data.players[i].playerName}</Option>`;
   }
   return model.statistics.playerNames;
 }
 
 function setSelectedPlayer(val) {
   model.statistics.selectedPlayer = val;
-  adriansfunksjon(val);
+  //adriansfunksjon(val);
+  getTop5(val);
+}
+
+function getTop5(val) {
+  let pId;
+  let pgPlayed = [];
+  if (val === "") {
+    console.log("blank input to getTop5");
+  } else {
+    for (let i = 0; i < model.data.players.length; i++) {
+      if (val === model.data.players[i].playerName) {
+        pId = model.data.players[i].playerId;
+      }
+    }
+  }
+  for (let i = 0; i < model.data.gamesPlayed.length; i++) {
+    if (
+      model.data.gamesPlayed[i].playerId === pId &&
+      model.data.gamesPlayed[i].gamemode === "Normal"
+    ) {
+      pgPlayed.push(model.data.gamesPlayed[i]);
+    }
+  }
 }
