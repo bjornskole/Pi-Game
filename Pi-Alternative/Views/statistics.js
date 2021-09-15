@@ -1,5 +1,5 @@
 let statisticsHTML = () => `
-   <div>statistics</div>
+   <div>Statistics</div>
    <select onchange="setStatMode(this.value)">
         <option selected="${model.statistics.selected}">${
   model.statistics.selected
@@ -10,37 +10,16 @@ let statisticsHTML = () => `
    <div>${model.statistics.selected === "Top5" ? Top5() : Graph()}</div>
    `;
 let Top5 = function () {
-  return `Top5<br>
+  return `
   <input onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
-    model.main.playerName
+    model.statistics.selectedPlayer
   }"/>
     <datalist id="Playernames">
-    ${genPlayerList()}
-    </datalist><br>
+      ${genPlayerList()}
+    </datalist>
+    <br>
     ${model.statistics.top5list}
     `;
-};
-let adriansfunksjon = function (val) {
-  let tmp2 = [];
-  let tmp = [];
-  for (let i = 0; i < model.data.players.length; i++) {
-    if (model.data.players[i].playerName === val) {
-      tmp.push(model.data.players[i]);
-      for (j = 0; j < model.data.gamesPlayed.length; j++) {
-        tmp2.push(
-          model.data.gamesPlayed.find(
-            ({ playerId }) => playerId === tmp[0].playerId
-          )
-        );
-      }
-    }
-    console.log("tmp:" + tmp + "tmp2:" + tmp2);
-  }
-  //console.log(tmp);
-  /*   return `${tmp2}
-    `; */
-
-  // model.statistics.top5list = `<div>${tmp2}>/div>`;
 };
 
 let Graph = function () {
@@ -50,41 +29,48 @@ let Graph = function () {
 
 function setStatMode(val) {
   model.statistics.selected = val;
-  changeView(statisticsHTML);
 }
 
 function genPlayerList() {
-  model.statistics.playerNames = [];
+  model.statistics.playerNames = [`<Option>${model.main.playerName}</Option>`];
   for (let i = 0; i < model.data.players.length; i++) {
-    model.statistics.playerNames += `<Option>${model.data.players[i].playerName}</Option>`;
+    model.statistics.playerNames.push(
+      `<Option>${model.data.players[i].playerName}</Option>`
+    );
   }
   return model.statistics.playerNames;
 }
 
 function setSelectedPlayer(val) {
   model.statistics.selectedPlayer = val;
-  //adriansfunksjon(val);
   getTop5(val);
+  changeView(statisticsHTML);
 }
 
 function getTop5(val) {
   let pId;
-  let pgPlayed = [];
+  let tmp = "";
   if (val === "") {
-    console.log("blank input to getTop5");
+    return ``;
   } else {
     for (let i = 0; i < model.data.players.length; i++) {
       if (val === model.data.players[i].playerName) {
         pId = model.data.players[i].playerId;
       }
     }
-  }
-  for (let i = 0; i < model.data.gamesPlayed.length; i++) {
-    if (
-      model.data.gamesPlayed[i].playerId === pId &&
-      model.data.gamesPlayed[i].gamemode === "Normal"
-    ) {
-      pgPlayed.push(model.data.gamesPlayed[i]);
+    for (let i = 0; i < model.data.gamesPlayed.length; i++) {
+      if (
+        model.data.gamesPlayed[i].playerId === pId &&
+        model.data.gamesPlayed[i].gamemode === "Normal"
+      ) {
+        tmp += retTableData(
+          val,
+          model.data.gamesPlayed[i].date,
+          model.data.gamesPlayed[i].time,
+          model.data.gamesPlayed[i].score
+        );
+      }
     }
+    model.statistics.top5list = retTable(tmp);
   }
 }

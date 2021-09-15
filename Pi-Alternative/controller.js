@@ -51,16 +51,24 @@ function setLeaderboardType(val) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `<tr><td>${names}</td> <td>${tmp[i].date}</td> <td>${tmp[i].time}</td> <td>${tmp[i].score}</td></tr>`;
+      tmpTxt += retTableData(names, tmp[i].date, tmp[i].time, tmp[i].score);
     }
   } else {
     for (let i = 0; i < tmp.length; i++) {
       names = model.data.players.find(
         ({ playerId }) => playerId === tmp[i].playerId
       ).playerName;
-      tmpTxt += `<tr><td>${names}</td> <td>${tmp[i].date}</td> <td>${tmp[i].time}</td> <td>${tmp[i].score}</td></tr>`;
+      tmpTxt += retTableData(names, tmp[i].date, tmp[i].time, tmp[i].score);
     }
   }
+  return retTable(tmpTxt);
+}
+
+function retTableData(names, date, time, score) {
+  return `<tr><td>${names}</td> <td>${date}</td> <td>${time}</td> <td>${score}</td></tr>`;
+}
+
+function retTable(params) {
   return `
   <table>
     <tr>
@@ -69,7 +77,7 @@ function setLeaderboardType(val) {
       <th title="mm:ss:ms">Time</th>
       <th>Score</th>
     </tr>
-    ${tmpTxt}
+    ${params}
   </table>
   `;
 }
