@@ -49,6 +49,7 @@ function setSelectedPlayer(val) {
 
 function getTop5(val) {
   let pId;
+  let tmpObj = [];
   let tmp = "";
   if (val === "") {
     return ``;
@@ -58,19 +59,19 @@ function getTop5(val) {
         pId = model.data.players[i].playerId;
       }
     }
-    for (let i = 0; i < model.data.gamesPlayed.length; i++) {
+    for (let j = 0; j < model.data.gamesPlayed.length; j++) {
       if (
-        model.data.gamesPlayed[i].playerId === pId &&
-        model.data.gamesPlayed[i].gamemode === "Normal"
+        model.data.gamesPlayed[j].playerId === pId &&
+        model.data.gamesPlayed[j].gamemode === "Normal"
       ) {
-        tmp += retTableData(
-          val,
-          model.data.gamesPlayed[i].date,
-          model.data.gamesPlayed[i].time,
-          model.data.gamesPlayed[i].score
-        );
+        tmpObj.push(model.data.gamesPlayed[j]);
       }
     }
-    model.statistics.top5list = retTable(tmp);
+    //console.log(tmpObj);
+    tmpObj.sort(sortScore);
+    for (let k = 0; k < tmpObj.length; k++) {
+      tmp += retTableData(val, tmpObj[k].date, tmpObj[k].time, tmpObj[k].score);
+    }
   }
+  model.statistics.top5list = retTable(tmp);
 }
