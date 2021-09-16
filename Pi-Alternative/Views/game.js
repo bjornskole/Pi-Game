@@ -101,6 +101,9 @@ function checkPlayerHighScore(gamestate) {
   );
   if (gamestate == "preGame") {
     if (curplayerdata === undefined) {
+      if (model.main.playerName = "") {
+        model.main.playerName = "Guest";
+      }
       return "You have not played any games";
     }
     else {
