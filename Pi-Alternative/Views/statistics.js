@@ -75,7 +75,6 @@ function getTop5(val) {
     } else {
       counter = tmpObj.length;
     }
-
     for (let k = 0; k < counter; k++) {
       tmp += retTableData(val, tmpObj[k].date, tmpObj[k].time, tmpObj[k].score);
     }
