@@ -17,6 +17,7 @@ function backBtn() {
   changeView(mainView);
   resetPi();
   resetGameVal();
+  document.getElementById("inputBox").value = model.main.playerName;
 }
 function sortScore(a, b) {
   let a2 = new Date(a.date).toISOString();
