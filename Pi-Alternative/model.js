@@ -51,7 +51,7 @@ const model = {
         date: "2021-07-14",
         time: "00:13:34",
         score: 18,
-        playerId: 2,
+        playerId: 0,
         gamemode: "Practice",
       },
       {
@@ -75,7 +75,7 @@ const model = {
         date: "2021-09-14",
         time: "00:13:34",
         score: 10,
-        playerId: 2,
+        playerId: 0,
         gamemode: "Normal",
       },
     ],
@@ -84,7 +84,7 @@ const model = {
         playerId: 0,
         playerName: "Adrian",
         highscore: 100,
-        gamesPlayed:{},
+        gamesPlayed: {},
       },
       {
         playerId: 1,
