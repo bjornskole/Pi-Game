@@ -51,6 +51,7 @@ function getTop5(val) {
   let pId;
   let tmpObj = [];
   let tmp = "";
+  let counter;
   if (val === "") {
     return ``;
   } else {
@@ -69,7 +70,13 @@ function getTop5(val) {
     }
     //console.log(tmpObj);
     tmpObj.sort(sortScore);
-    for (let k = 0; k < tmpObj.length; k++) {
+    if (tmpObj.length > 5) {
+      counter = 5;
+    } else {
+      counter = tmpObj.length;
+    }
+
+    for (let k = 0; k < counter; k++) {
       tmp += retTableData(val, tmpObj[k].date, tmpObj[k].time, tmpObj[k].score);
     }
   }
