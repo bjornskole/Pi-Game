@@ -58,6 +58,7 @@ function myChart() {
 
 function setStatMode(val) {
   model.statistics.selected = val;
+  changeView(statisticsHTML);
 }
 
 function genPlayerList() {
