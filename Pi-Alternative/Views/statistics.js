@@ -27,7 +27,7 @@ let Graph = function () {
   <div>
   <canvas id="myChart"></canvas>
   </div>
-  ${myChart()}  
+  ${setTimeout(myChart, 1)}  
   `;
 };
 
