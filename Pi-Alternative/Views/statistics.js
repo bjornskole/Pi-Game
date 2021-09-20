@@ -28,6 +28,13 @@ let Top5 = function() {
 //start of graph stuff
 let Graph = function() {
     return `Graph
+    <div class="mainContainer">
+  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
+    model.statistics.selectedPlayer
+  }"/>
+    <datalist id="Playernames">
+      ${genPlayerList()}
+    </datalist>
   <div>
   <canvas id="myChart"></canvas>
   </div>
@@ -49,8 +56,6 @@ const data = {
         data: scoreData,
     }, ],
 };
-
-
 
 const config = {
     type: "line",
