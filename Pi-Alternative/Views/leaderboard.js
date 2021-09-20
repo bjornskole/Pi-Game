@@ -8,6 +8,8 @@ let leaderboardHTML = () => `
   <button class="navBtns" onclick="gamemodeBack(leaderboardHTML)"><-</button>
   ${model.gameModes.selected}
   <button class="navBtns" onclick="gamemodeForward(leaderboardHTML)">-></button>
+  <div class="leader-txt">${model.gameModes.selected}</div>
+  <button class="navBtns" onclick="gamemodeForward(leaderboardHTML)">=></button>
   </div>
   <div>${setLeaderboardType(model.gameModes.selected)}</div>
   <div class="mainContainer">

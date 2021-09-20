@@ -92,7 +92,17 @@ body {
     background-color: rgb(255, 255, 255);
     padding: 1%;
     margin: 1%;
-    width: 13vh;
+    width: 6vh;
     border-radius: 1vh;
+<<<<<<< HEAD
     font-family: serif;
 }
+=======
+}
+
+.leader-txt {
+  font-size: 4.14vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
+}
+>>>>>>> d693706c5f4c7093989d3dbfb8fcaa1c13bc0eb7
