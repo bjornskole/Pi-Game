@@ -16,6 +16,9 @@ td {
   border-collapse: collapse;
   text-align: center;
 }
+body {
+  background-color: rgb(124, 124, 123);
+}
 
 .bckBtn {
   display: flex;
