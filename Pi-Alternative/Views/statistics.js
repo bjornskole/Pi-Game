@@ -2,21 +2,18 @@ let statisticsHTML = () => `
 <div class="mainContainer">
    <div>Statistics</div>
    <select class="dropDowns" onchange="setStatMode(this.value)">
-        <option selected="${model.statistics.selected}">${
-  model.statistics.selected
-}</option>
+        <option selected="${model.statistics.selected}">${model.statistics.selected
+    }</option>
         <option value="Top5">${model.statistics.type[0]}</option>
         <option value="Graph">${model.statistics.type[1]}</option>
    </select>
    <div>${model.statistics.selected === "Top5" ? Top5() : Graph()}</div>
    </div>
    `;
-let Top5 = function() {
+let Top5 = function () {
     return `
   <div class="mainContainer">
-  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
-    model.statistics.selectedPlayer
-  }"/>
+  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${model.statistics.selectedPlayer}"/>
     <datalist id="Playernames">
       ${genPlayerList()}
     </datalist>
@@ -26,19 +23,17 @@ let Top5 = function() {
     `;
 };
 //start of graph stuff
-let Graph = function() {
+let Graph = function () {
     return `Graph
     <div class="mainContainer">
-  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
-    model.statistics.selectedPlayer
-  }"/>
+  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${model.statistics.selectedPlayer}"/>
     <datalist id="Playernames">
       ${genPlayerList()}
     </datalist>
   <div>
-  <canvas id="myChart"></canvas>
+  <canvas id="myChart" width=1000 height=500></canvas>
   </div>
-  ${setTimeout(myChart, 1)}  
+  ${setTimeout(myChart, 1)}
   `;
 };
 
@@ -54,7 +49,7 @@ const data = {
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: scoreData,
-    }, ],
+    },],
 };
 
 const config = {
@@ -68,14 +63,17 @@ function myChart() {
 }
 
 function getDataForGraphsBasedOnPlayer(player) {
-    let gameIds = model.data.players[player].gamesPlayed;
-    gameIds.forEach(function(item, index, array) {
+    const tmpPlayerData = model.data.players.find(({ playerName }) => playerName === player);
+    let playerId = tmpPlayerData.playerId;
+
+    scoreData = [];
+    dateData = [];
+    let gameIds = model.data.players[playerId].gamesPlayed;
+    gameIds.forEach(function (item, index, array) {
         let tmpScore = model.data.gamesPlayed[item].score;
         scoreData.push(tmpScore);
-        console.log(tmpData);
         let tmpData = model.data.gamesPlayed[item].date;
         dateData.push(tmpData);
-        console.log(tmpData);
     });
 }
 //end of graph stuff
