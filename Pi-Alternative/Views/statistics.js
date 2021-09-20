@@ -35,38 +35,38 @@ let Graph = function () {
       ${genPlayerList()}
     </datalist>
     <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" class="canvas"></canvas>
     </div>
   `;
 };
-//${setTimeout(myChart, 1)}
 let scoreData = [];
 let dateData = [];
-const labels = dateData;
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(255, 99, 132)",
-      data: scoreData,
-    },
-  ],
-};
 
-const config = {
-  type: "line",
-  data: data,
-  options: {},
-};
 function getGraph(val) {
   getDataForGraphsBasedOnPlayer(val);
   setTimeout(myChart, 1);
-  console.log(val);
 }
 
 function myChart() {
+  const labels = dateData;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "My First dataset",
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: scoreData,
+      },
+    ],
+  };
+
+  const config = {
+    type: "line",
+    data: data,
+    options: {},
+  };
+
   new Chart(document.getElementById("myChart"), config);
 }
 
@@ -107,15 +107,15 @@ function genPlayerList() {
 
 function setSelectedPlayer(val, mode) {
   model.statistics.selectedPlayer = val;
-  mode === "top5" ? getTop5(val) : getGraph(val);
-  /*   switch (mode) {
+  //mode === "top5" ? getTop5(val) : getGraph(val);
+  switch (mode) {
     case "top5":
       getTop5(val);
       break;
     case "graph":
       getGraph(val);
       break;
-  } */
+  }
   changeView(statisticsHTML);
 }
 
