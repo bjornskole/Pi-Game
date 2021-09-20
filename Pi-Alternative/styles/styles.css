@@ -33,7 +33,8 @@ td {
 }
 .mainBtns {
   border: 1px solid white;
-  margin: 1.14%;
+  padding: 5px;
+  margin: 10px
 }
 .mainInput {
   margin-top: 3.14%;
