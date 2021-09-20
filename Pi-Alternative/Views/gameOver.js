@@ -4,12 +4,14 @@ let gameOver = function () {
   resetPi();
   resetGameVal();
   return `
+  <div class="mainContainer">
     <h1>GAME OVER!</h1>
     <div>Time: ${playedGame.time}</div>
     <div>Score: ${playedGame.score}</div>
     <div>Highscore: ${checkPlayerHighScore("gameEnd")}</div>
     <div>The next digit was: ${nextDigit}</div>
     <br><button onclick="StartGame()">Play Again!</button>
+    </div>
     `;
 };
 

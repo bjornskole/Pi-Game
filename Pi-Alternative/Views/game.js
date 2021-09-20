@@ -1,6 +1,9 @@
 let gameboardHTML = function () {
   return `
-<div>${model.gameModes.selected === "Practice" ? Practice() : Normal()}</div>`;
+  <div class="mainContainer">
+<div>${model.gameModes.selected === "Practice" ? Practice() : Normal()}</div>
+<div class="mainContainer">
+`;
 };
 
 let Practice = function () {

@@ -1,4 +1,5 @@
 let statisticsHTML = () => `
+<div class="mainContainer">
    <div>Statistics</div>
    <select onchange="setStatMode(this.value)">
         <option selected="${model.statistics.selected}">${
@@ -8,6 +9,7 @@ let statisticsHTML = () => `
         <option value="Graph">${model.statistics.type[1]}</option>
    </select>
    <div>${model.statistics.selected === "Top5" ? Top5() : Graph()}</div>
+   </div>
    `;
 let Top5 = function () {
   return `
