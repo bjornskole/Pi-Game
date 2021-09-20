@@ -16,3 +16,14 @@ td {
   border-collapse: collapse;
   text-align: center;
 }
+
+.bckBtn {
+  display: flex;
+  align-self: flex-start;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
