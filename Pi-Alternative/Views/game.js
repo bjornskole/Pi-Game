@@ -30,7 +30,7 @@ let Normal = function () {
 <div id="timerDiv"></div>
 <div>Current score: ${model.game.Input.length}</div>
 <div>Pi:${pi.decimalsStr}</div>
-<input type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
+<input class="mainInput" type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
 <br><button class="mainBtns" onclick="checkAnswer(this.value, 'GameOver')">End game</button>
 </div>
 `;
