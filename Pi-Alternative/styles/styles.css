@@ -21,7 +21,7 @@ body {
 }
 
 .bckBtn {
- 
+  background-color: rgb(124, 124, 123);
   display: flex;
   align-self: flex-start;
 }
@@ -37,11 +37,12 @@ body {
 }
 .mainBtns {
   font-size: 3.14vh;
-  border: 1px solid white;
-  background-color: white;
+  border: 1px solid rgb(124, 124, 123);
+  background-color: rgb(124, 124, 123);
   padding: 1%;
   margin: 1%;
 }
 .mainInput {
+  background-color: rgb(124, 124, 123);
   margin-top: 1%;
 }
