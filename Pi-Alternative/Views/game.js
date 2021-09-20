@@ -16,8 +16,8 @@ let Practice = function () {
   <div>${model.game.feedback}</div>
   <div>You entered: ${model.game.Input}</div>
   <div>Correct Pi is:${pi.decimalsStr}</div>
-  <input type="number" id="inputBox" oninput="checkPractice(this.value, Practice)"/>
-  <br><button onclick="checkAnswer(this.value, 'GameOver')">End game</button>
+  <input class="mainInput" type="number" id="inputBox" oninput="checkPractice(this.value, Practice)"/>
+  <br><button  class="mainBtns" onclick="checkAnswer(this.value, 'GameOver')">End game</button>
   </div>
   `;
 };
@@ -30,8 +30,8 @@ let Normal = function () {
 <div id="timerDiv"></div>
 <div>Current score: ${model.game.Input.length}</div>
 <div>Pi:${pi.decimalsStr}</div>
-<input type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
-<br><button onclick="checkAnswer(this.value, 'GameOver')">End game</button>
+<input class="mainInput" type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
+<br><button class="mainBtns" onclick="checkAnswer(this.value, 'GameOver')">End game</button>
 </div>
 `;
 };

@@ -68,3 +68,24 @@ body {
     font-size: 2vh;
     text-align: center;
 }
+.dropDowns {
+  background-color: rgb(255, 255, 255);
+  margin-top: 1%;
+  width: 25vh;
+  height: 5vh;
+  border-radius: 1vh;
+  font-size: 2vh;
+  text-align: center;
+}
+.dropItems {
+  border-bottom: 0.3px;
+}
+.navBtns {
+  font-size: 3.14vh;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    padding: 1%;
+    margin: 1%;
+    width: 13vh;
+    border-radius: 1vh;
+}

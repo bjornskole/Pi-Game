@@ -1,9 +1,10 @@
 let statisticsHTML = () => `
 <div class="mainContainer">
    <div>Statistics</div>
-   <select onchange="setStatMode(this.value)">
-        <option selected="${model.statistics.selected}">${model.statistics.selected
-  }</option>
+   <select class="dropDowns" onchange="setStatMode(this.value)">
+        <option selected="${model.statistics.selected}">${
+  model.statistics.selected
+}</option>
         <option value="Top5">${model.statistics.type[0]}</option>
         <option value="Graph">${model.statistics.type[1]}</option>
    </select>
@@ -12,13 +13,16 @@ let statisticsHTML = () => `
    `;
 let Top5 = function() {
     return `
-  <input onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${model.statistics.selectedPlayer
-    }"/>
+  <div class="mainContainer">
+  <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
+    model.statistics.selectedPlayer
+  }"/>
     <datalist id="Playernames">
       ${genPlayerList()}
     </datalist>
     <br>
     ${model.statistics.top5list}
+    </div>
     `;
 };
 //start of graph stuff

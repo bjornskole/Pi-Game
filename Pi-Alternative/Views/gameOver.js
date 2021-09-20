@@ -10,7 +10,7 @@ let gameOver = function () {
     <div>Score: ${playedGame.score}</div>
     <div>Highscore: ${checkPlayerHighScore("gameEnd")}</div>
     <div>The next digit was: ${nextDigit}</div>
-    <br><button onclick="StartGame()">Play Again!</button>
+    <br><button class="mainBtns" onclick="StartGame()">Play Again!</button>
     </div>
     `;
 };
