@@ -2,12 +2,14 @@ let gameboardHTML = function () {
   return `
   <div class="mainContainer">
 <div>${model.gameModes.selected === "Practice" ? Practice() : Normal()}</div>
-<div class="mainContainer">
+</div>
 `;
 };
 
 let Practice = function () {
-  return `<div>Game Mode: Practice</div>
+  return `
+  <div class="mainContainer">
+  <div>Game Mode: Practice</div>
   <div>Highscore for Normal: ${checkPlayerHighScore("preGame")} </div>
   <div id="timerDiv"></div>
   <div>Lives left: ${model.game.life}</div>
@@ -16,11 +18,13 @@ let Practice = function () {
   <div>Correct Pi is:${pi.decimalsStr}</div>
   <input type="number" id="inputBox" oninput="checkPractice(this.value, Practice)"/>
   <br><button onclick="checkAnswer(this.value, 'GameOver')">End game</button>
+  </div>
   `;
 };
 
 let Normal = function () {
   return `
+  <div class="mainContainer">
 <div>Game Mode: Normal</div>
 <div>Highscore: ${checkPlayerHighScore("preGame")} </div>
 <div id="timerDiv"></div>
@@ -28,6 +32,7 @@ let Normal = function () {
 <div>Pi:${pi.decimalsStr}</div>
 <input type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
 <br><button onclick="checkAnswer(this.value, 'GameOver')">End game</button>
+</div>
 `;
 };
 
