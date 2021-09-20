@@ -68,3 +68,15 @@ body {
     font-size: 2vh;
     text-align: center;
 }
+.dropDowns {
+  background-color: rgb(255, 255, 255);
+  margin-top: 1%;
+  width: 25vh;
+  height: 5vh;
+  border-radius: 1vh;
+  font-size: 2vh;
+  text-align: center;
+}
+.dropItems {
+  border-bottom: 0.3px;
+}
