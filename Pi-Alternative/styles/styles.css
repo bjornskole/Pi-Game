@@ -27,3 +27,7 @@ td {
   align-items: center;
   justify-items: center;
 }
+.leaderBtns {
+  display: flex;
+  flex-direction: row;
+}

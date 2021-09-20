@@ -173,7 +173,7 @@ class StopWatch {
 
       this.miliSec = this.miliSec + 1;
 
-      if (this.miliSec == 60) {
+      if (this.miliSec == 100) {
         this.sec = this.sec + 1;
         this.miliSec = 0;
       }
