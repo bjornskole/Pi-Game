@@ -1,7 +1,7 @@
 let statisticsHTML = () => `
 <div class="mainContainer">
    <div>Statistics</div>
-   <select  class="dropDowns" onchange="setStatMode(this.value)">
+   <select class="dropDowns" onchange="setStatMode(this.value)">
         <option selected="${model.statistics.selected}">${
   model.statistics.selected
 }</option>
@@ -13,6 +13,7 @@ let statisticsHTML = () => `
    `;
 let Top5 = function () {
   return `
+  <div class="mainContainer">
   <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value)" type="text" list="Playernames" value="${
     model.statistics.selectedPlayer
   }"/>
@@ -21,6 +22,7 @@ let Top5 = function () {
     </datalist>
     <br>
     ${model.statistics.top5list}
+    </div>
     `;
 };
 //start of graph stuff
