@@ -31,3 +31,10 @@ td {
   display: flex;
   flex-direction: row;
 }
+.mainBtns {
+  border: 1px solid white;
+  margin: 1.14%;
+}
+.mainInput {
+  margin-top: 3.14%;
+}
