@@ -17,6 +17,7 @@ function backBtn() {
   changeView(mainView);
   resetPi();
   resetGameVal();
+  sWatch.ResetTimer();
   document.getElementById("inputBox").value = model.main.playerName;
 }
 function sortScore(a, b) {
