@@ -33,6 +33,7 @@ td {
 }
 .mainBtns {
   border: 1px solid white;
+  background-color: white;
   padding: 3%;
   margin: 2%;
 }
