@@ -24,12 +24,12 @@ let Top5 = function () {
     `;
 };
 //start of graph stuff
-let Graph = async function () {
+let Graph = function () {
   return `Graph
   <div>
   <canvas id="myChart"></canvas>
   </div>
-  ${myChart()}  
+  ${setTimeout(myChart, 1)}  
   `;
 };
 
