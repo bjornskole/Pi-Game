@@ -40,6 +40,7 @@ let Graph = function () {
 };
 let scoreData = [];
 let dateData = [];
+let graphPlayerName;
 
 function getGraph(val) {
   getDataForGraphsBasedOnPlayer(val);
@@ -52,7 +53,7 @@ function myChart() {
     labels: labels,
     datasets: [
       {
-        label: "My First dataset",
+        label: graphPlayerName,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: scoreData,
@@ -74,7 +75,7 @@ function getDataForGraphsBasedOnPlayer(player) {
     ({ playerName }) => playerName === player
   );
   let playerId = tmpPlayerData.playerId;
-
+  graphPlayerName = player;
   scoreData = [];
   dateData = [];
   let gameIds = model.data.players[playerId].gamesPlayed;
