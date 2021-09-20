@@ -2,9 +2,8 @@ let statisticsHTML = () => `
 <div class="mainContainer">
    <div>Statistics</div>
    <select class="dropDowns" onchange="setStatMode(this.value)">
-        <option selected="${model.statistics.selected}">${
-  model.statistics.selected
-}</option>
+        <option selected="${model.statistics.selected}">${model.statistics.selected
+    }</option>
         <option value="Top5">${model.statistics.type[0]}</option>
         <option value="Graph">${model.statistics.type[1]}</option>
    </select>
