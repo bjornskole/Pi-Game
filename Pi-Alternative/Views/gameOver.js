@@ -26,10 +26,11 @@ let resetPi = function () {
 function resetGameVal() {
   model.game.Input = "";
   model.game.feedback = "";
-  model.game.piHolder.tmpY = "";
-  model.game.piHolder.tmpR = "";
-  model.game.piHolder.tmpT = "";
-  model.game.piHolder.tmpI = "";
+  model.game.piHolder.tmpQ = 1n;
+  model.game.piHolder.tmpR = 180n;
+  model.game.piHolder.tmpT = 60n;
+  model.game.piHolder.tmpI = 2n;
+  model.game.piHolder.decimalsStr = "";
   model.game.life = 3;
 }
 function saveData() {
