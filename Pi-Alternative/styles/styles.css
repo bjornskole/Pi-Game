@@ -105,4 +105,6 @@ body {
 .canvas {
     height: 50vh;
     width: 75vh;
-}
+    background-color: #3a3838;
+    border-radius: 1vh;
+    }
