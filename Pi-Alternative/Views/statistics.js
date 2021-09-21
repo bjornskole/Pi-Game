@@ -2,8 +2,9 @@ let statisticsHTML = () => `
 <div class="mainContainer">
    <div>Statistics</div>
    <select class="dropDowns" onchange="setStatMode(this.value)">
-        <option selected="${model.statistics.selected}">${model.statistics.selected
-    }</option>
+        <option selected="${model.statistics.selected}">${
+  model.statistics.selected
+}</option>
         <option value="Top5">${model.statistics.type[0]}</option>
         <option value="Graph">${model.statistics.type[1]}</option>
    </select>
@@ -38,9 +39,6 @@ let Graph = function () {
     </div>
   `;
 };
-let scoreData = [];
-let dateData = [];
-let graphPlayerName;
 
 function getGraph(val) {
   getDataForGraphsBasedOnPlayer(val);
@@ -48,15 +46,15 @@ function getGraph(val) {
 }
 
 function myChart() {
-  const labels = dateData;
+  const labels = model.statistics.dateData;
   const data = {
     labels: labels,
     datasets: [
       {
-        label: graphPlayerName,
+        label: model.statistics.graphPlayerName,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
-        data: scoreData,
+        data: model.statistics.scoreData,
       },
     ],
   };
@@ -75,15 +73,15 @@ function getDataForGraphsBasedOnPlayer(player) {
     ({ playerName }) => playerName === player
   );
   let playerId = tmpPlayerData.playerId;
-  graphPlayerName = player;
-  scoreData = [];
-  dateData = [];
+  model.statistics.graphPlayerName = player;
+  model.statistics.scoreData = [];
+  model.statistics.dateData = [];
   let gameIds = model.data.players[playerId].gamesPlayed;
   gameIds.forEach(function (item, index, array) {
     let tmpScore = model.data.gamesPlayed[item].score;
-    scoreData.push(tmpScore);
+    model.statistics.scoreData.push(tmpScore);
     let tmpData = model.data.gamesPlayed[item].date;
-    dateData.push(tmpData);
+    model.statistics.dateData.push(tmpData);
     console.log(tmpData);
     console.log(tmpScore);
   });

@@ -34,6 +34,9 @@ const model = {
     playerNames: [],
     selectedPlayer: "",
     top5list: "",
+    scoreData: [],
+    dateData: [],
+    graphPlayerName: "",
   },
   data: {
     // leaderboard: { List: [] },

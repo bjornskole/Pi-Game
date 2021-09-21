@@ -42,7 +42,7 @@ function checkAnswer(val, mode) {
   console.log(pi.decimalsStr);
   model.game.Input += val;
   switch (
-  val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
+    val === pi.decimalsStr.charAt(pi.decimalsStr.length - 1) ? mode : "GameOver"
   ) {
     case Normal:
       changeView(mode);
@@ -69,7 +69,7 @@ function checkPractice(val, mode) {
     changeView(gameOver);
   } else if (val > parseInt(pi.decimalsStr[pi.decimalsStr.length - 1])) {
     model.game.feedback =
-      "<div style='color:red;'>Your number was to high</div>";
+      "<div style='color:red;'>Your number was too high</div>";
     console.log("High");
     model.game.life -= 1;
     oldPiState();
@@ -113,20 +113,16 @@ function checkPlayerHighScore(gamestate) {
         model.main.playerName = "Guest";
       }
       return "You have not played any games";
-    }
-    else {
+    } else {
       return curplayerdata.highscore;
     }
-  }
-  else if (gamestate == "gameEnd") {
+  } else if (gamestate == "gameEnd") {
     if (curplayerdata === undefined) {
       return playedGame.score;
-    }
-    else if (playedGame.score > curplayerdata.highscore){
+    } else if (playedGame.score > curplayerdata.highscore) {
       return "You achieved a new highscore of " + playedGame.score + "!";
-    }
-    else {
+    } else {
       return curplayerdata.highscore;
-    } 
+    }
   }
 }
