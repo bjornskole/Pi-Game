@@ -52,8 +52,8 @@ function myChart() {
     datasets: [
       {
         label: model.statistics.graphPlayerName,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "#1E90FF",
+        borderColor: "#1E90FF",
         data: model.statistics.scoreData,
       },
     ],
@@ -83,14 +83,13 @@ function getDataForGraphsBasedOnPlayer(player) {
       model.statistics.scoreData.push(tmpScore);
       let tmpData = model.data.gamesPlayed[item].date;
       model.statistics.dateData.push(tmpData);
-      console.log(tmpData);
-      console.log(tmpScore);
     });
   }
   catch (err) {
     if (err.type = TypeError){
+      document.querySelector('.mainInput').value = "";
       alert("Player has no data!");
-      throw "Player has no data!"
+      throw "Player has no data!";
     }
   }
 }
