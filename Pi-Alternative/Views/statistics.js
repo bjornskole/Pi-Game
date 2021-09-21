@@ -72,19 +72,27 @@ function getDataForGraphsBasedOnPlayer(player) {
   const tmpPlayerData = model.data.players.find(
     ({ playerName }) => playerName === player
   );
-  let playerId = tmpPlayerData.playerId;
-  model.statistics.graphPlayerName = player;
-  model.statistics.scoreData = [];
-  model.statistics.dateData = [];
-  let gameIds = model.data.players[playerId].gamesPlayed;
-  gameIds.forEach(function (item, index, array) {
-    let tmpScore = model.data.gamesPlayed[item].score;
-    model.statistics.scoreData.push(tmpScore);
-    let tmpData = model.data.gamesPlayed[item].date;
-    model.statistics.dateData.push(tmpData);
-    console.log(tmpData);
-    console.log(tmpScore);
-  });
+  try {
+    let playerId = tmpPlayerData.playerId;
+    model.statistics.graphPlayerName = player;
+    model.statistics.scoreData = [];
+    model.statistics.dateData = [];
+    let gameIds = model.data.players[playerId].gamesPlayed;
+    gameIds.forEach(function (item, index, array) {
+      let tmpScore = model.data.gamesPlayed[item].score;
+      model.statistics.scoreData.push(tmpScore);
+      let tmpData = model.data.gamesPlayed[item].date;
+      model.statistics.dateData.push(tmpData);
+      console.log(tmpData);
+      console.log(tmpScore);
+    });
+  }
+  catch (err) {
+    if (err.type = TypeError){
+      alert("Player has no data!");
+      throw "Player has no data!"
+    }
+  }
 }
 //end of graph stuff
 
