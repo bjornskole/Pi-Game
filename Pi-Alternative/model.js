@@ -17,11 +17,11 @@ const model = {
     feedback: "",
     Input: "",
     piHolder: {
-      tmpQ: null,
-      tmpR: null,
-      tmpT: null,
-      tmpI: null,
-      decimalsStr: null,
+      tmpQ: 1n,
+      tmpR: 180n,
+      tmpT: 60n,
+      tmpI: 2n,
+      decimalsStr: "",
     },
   },
   gameModes: {
