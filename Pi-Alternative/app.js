@@ -9,3 +9,9 @@ function updateView() {
 }
 changeView(mainView);
 ///// updated
+
+function changeView(element) {
+  model.router.currentPage = element();
+  updateView();
+  inputFocus(element);
+}
