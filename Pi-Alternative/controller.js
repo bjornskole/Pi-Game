@@ -256,24 +256,6 @@ function myChart() {
 
 }
 
-/******************************************************** 
- * 
- * To do: Vis graf automatisk hvis spiller har data 
- * 
- * *************************************************/
-
-// function displayGraphAutomatically(player){
-//   const tmpPlayerData = model.data.players.find(
-//     ({ playerName }) => playerName === player
-//   );
-//   if (tmpPlayerData === undefined) {
-//     return;
-//   }
-//   else {
-//     getDataForGraphsBasedOnPlayer(player);
-//     setTimeout(myChart(), 1);
-//   }
-// }
 function getDataForGraphsBasedOnPlayer(player) {
   const tmpPlayerData = model.data.players.find(
     ({ playerName }) => playerName === player
