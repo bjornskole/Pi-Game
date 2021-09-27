@@ -3,7 +3,7 @@ let app = document.getElementById("app");
 updateView();
 function updateView() {
   app.innerHTML = `
-    <button onclick="backBtn()"  class="bckBtn">Back</button> 
+    <button onclick="backBtn()"  class="bckBtn" style="display:${model.showBBtn}">Back</button> 
     <div>${model.router.currentPage}</div>
     `;
 }

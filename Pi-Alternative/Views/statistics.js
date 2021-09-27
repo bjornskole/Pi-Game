@@ -1,4 +1,5 @@
 let statisticsHTML = () => `
+${model.showBBtn = ''}
 <div class="mainContainer">
    <div>Statistics</div>
    <select class="dropDowns" onchange="setStatMode(this.value)">

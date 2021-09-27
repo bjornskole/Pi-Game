@@ -1,4 +1,5 @@
 function backBtn() {
+  model.showBBtn = 'none';
   changeView(mainView);
   resetPi();
   resetGameVal();

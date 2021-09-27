@@ -2,6 +2,7 @@ let score = (item) =>
   item.map((i) => `<div>${i.playerName}-${i.highscore}</div>`);
 
 let leaderboardHTML = () => `
+${model.showBBtn = ''}
 <div class="mainContainer">
   <div>Leaderboard</div>
   <div class="leaderBtns">

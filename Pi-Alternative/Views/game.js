@@ -1,5 +1,6 @@
 let gameboardHTML = function () {
   return `
+  ${model.showBBtn = ''}
   <div class="mainContainer">
 <div>${model.gameModes.selected === "Practice" ? Practice() : Normal()}</div>
 </div>

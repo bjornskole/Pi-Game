@@ -6,6 +6,7 @@ const model = {
     currentPage: "main",
     pages: ["main", "gameMode", "game", "leaderboard", "statistics"],
   },
+  showBBtn:'none',
   main: {
     playerName: "Guest", //onChange check if player exists then update selectedPlayer and generate player object in db
   },

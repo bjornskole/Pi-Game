@@ -1,4 +1,5 @@
 let gameHTML = () => `
+${model.showBBtn = ''}
 <div class="mainContainer">
    <select class="dropDowns" onchange="setGameMode(this.value)">
       <option class="dropItems" selected="${model.gameModes.selected}">${model.gameModes.selected}</option>
