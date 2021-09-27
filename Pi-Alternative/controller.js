@@ -230,7 +230,6 @@ function getGraph(val) {
   getDataForGraphsBasedOnPlayer(val);
   setTimeout(myChart, 1);
 }
-
 function myChart() {
   const labels = model.statistics.dateData;
   const data = {
@@ -250,10 +249,31 @@ function myChart() {
     data: data,
     options: {},
   };
-
+  if (model.statistics.gamemode != ""){
+    document.getElementById("gamemodeSelectTitle").innerHTML = model.statistics.gamemode;
+  }
   new Chart(document.getElementById("myChart"), config);
+
 }
 
+/******************************************************** 
+ * 
+ * To do: Vis graf automatisk hvis spiller har data 
+ * 
+ * *************************************************/
+
+// function displayGraphAutomatically(player){
+//   const tmpPlayerData = model.data.players.find(
+//     ({ playerName }) => playerName === player
+//   );
+//   if (tmpPlayerData === undefined) {
+//     return;
+//   }
+//   else {
+//     getDataForGraphsBasedOnPlayer(player);
+//     setTimeout(myChart(), 1);
+//   }
+// }
 function getDataForGraphsBasedOnPlayer(player) {
   const tmpPlayerData = model.data.players.find(
     ({ playerName }) => playerName === player
@@ -261,24 +281,30 @@ function getDataForGraphsBasedOnPlayer(player) {
   try {
     let playerId = tmpPlayerData.playerId;
     model.statistics.graphPlayerName = player;
+    console.log(player);
     model.statistics.scoreData = [];
     model.statistics.dateData = [];
     let gameIds = model.data.players[playerId].gamesPlayed;
-    gameIds.forEach(function (item) {
-      let tmpScore = model.data.gamesPlayed[item].score;
-      model.statistics.scoreData.push(tmpScore);
-      let tmpData = model.data.gamesPlayed[item].date;
-      model.statistics.dateData.push(tmpData);
-    });
+    console.log(gameIds);
+    console.log(tmpPlayerData);
+    for (i = 0, n = gameIds.length; i < n; i++) {
+      let curGameId = gameIds[i];
+      console.log("Current game Id: " + curGameId);
+      if (model.data.gamesPlayed[curGameId].gamemode === model.statistics.gamemode) {
+        let tmpScore = model.data.gamesPlayed[curGameId].score;
+        model.statistics.scoreData.push(tmpScore);
+        console.log(tmpScore);
+        let tmpData = model.data.gamesPlayed[curGameId].date;
+        model.statistics.dateData.push(tmpData);
+      }
+    };
   }
   catch (err) {
-    if (err.type = TypeError){
-      document.querySelector('.mainInput').value = "";
-      alert("Player has no data!");
-      throw "Player has no data!";
-    }
+    alert("Player has no data!");
+    throw "Player has no data!";
   }
 }
+
 /********************************************************************
 * Statistics 
 *********************************************************************/
@@ -288,6 +314,10 @@ function setStatMode(val) {
   changeView(statisticsHTML);
 }
 
+function setSelectedGamemode(gamemode) {
+  model.statistics.gamemode = gamemode;
+  setSelectedPlayer(model.statistics.selectedPlayer, "graph");
+}
 function setSelectedPlayer(val, mode) {
   model.statistics.selectedPlayer = val;
   //mode === "top5" ? getTop5(val) : getGraph(val);

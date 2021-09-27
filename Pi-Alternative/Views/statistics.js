@@ -33,6 +33,11 @@ let Graph = function () {
     <datalist id="Playernames">
       ${genPlayerList()}
     </datalist>
+    <select name="gamemodes" id="gamemodeselect" class="mainInput" onChange="setSelectedGamemode(this.value)">
+    <option id="gamemodeSelectTitle" value="Choose mode">Pick a gamemode</option> 
+    <option value="Normal">Normal</option>
+    <option value="Practice">Practice</option>
+    </select>
     <div>
         <canvas id="myChart" class="canvas"></canvas>
     </div>
