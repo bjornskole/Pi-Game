@@ -1,5 +1,5 @@
 function backBtn() {
-  model.showBBtn = 'none';
+  model.showBBtn = "none";
   changeView(mainView);
   resetPi();
   resetGameVal();
@@ -7,13 +7,13 @@ function backBtn() {
   document.getElementById("inputBox").value = model.main.playerName;
 }
 
-
 /*****************************************************
  * Game Mode
-*****************************************************/
+ *****************************************************/
 function setPlayerName(val) {
   model.main.playerName = val;
-  console.log(model.main.playerName);
+  model.statistics.selectedPlayer = val;
+  console.log("Player is: " + model.main.playerName);
 }
 
 function setGameMode(val) {
@@ -22,7 +22,7 @@ function setGameMode(val) {
 
 /*****************************************************
  * LeaderBoard
-*****************************************************/
+ *****************************************************/
 function sortScore(a, b) {
   let a2 = new Date(a.date).toISOString();
   let b2 = new Date(b.date).toISOString();
@@ -145,9 +145,148 @@ function StartGame() {
   changeView(gameboardHTML);
 }
 
+/********************************************************************
+ * Statistics
+ *********************************************************************/
+function setStatMode(val) {
+  model.statistics.selected = val;
+  changeView(statisticsHTML);
+}
+
+function setSelectedPlayer(val, mode) {
+  model.statistics.selectedPlayer = val;
+  //mode === "top5" ? getTop5(val) : getGraph(val);
+  switch (mode) {
+    case "top5":
+      getTop5(val);
+      break;
+    case "graph":
+      getGraph(val);
+      break;
+  }
+  changeView(statisticsHTML);
+}
+
+function genPlayerList() {
+  model.statistics.playerNames = [`<Option>${model.main.playerName}</Option>`];
+  for (let i = 0; i < model.data.players.length; i++) {
+    model.statistics.playerNames.push(
+      `<Option>${model.data.players[i].playerName}</Option>`
+    );
+  }
+  return model.statistics.playerNames;
+}
+/***************************************************
+ * Graph
+ ***************************************************/
+function setSelectedGamemode(gamemode) {
+  model.statistics.gamemode = gamemode;
+  setSelectedPlayer(model.statistics.selectedPlayer, "graph");
+}
+
+function getGraph(val) {
+  getDataForGraphsBasedOnPlayer(val);
+  setTimeout(myChart, 1);
+}
+function myChart() {
+  const labels = model.statistics.dateData;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: model.statistics.graphPlayerName,
+        backgroundColor: "#1E90FF",
+        borderColor: "#1E90FF",
+        data: model.statistics.scoreData,
+      },
+    ],
+  };
+
+  const config = {
+    type: "line",
+    data: data,
+    options: {},
+  };
+  if (model.statistics.gamemode != "") {
+    document.getElementById("gamemodeSelectTitle").innerHTML =
+      model.statistics.gamemode;
+  }
+  new Chart(document.getElementById("myChart"), config);
+}
+
+function getDataForGraphsBasedOnPlayer(player) {
+  const tmpPlayerData = model.data.players.find(
+    ({ playerName }) => playerName === player
+  );
+  try {
+    let playerId = tmpPlayerData.playerId;
+    model.statistics.graphPlayerName = player;
+    console.log(player);
+    model.statistics.scoreData = [];
+    model.statistics.dateData = [];
+    let gameIds = model.data.players[playerId].gamesPlayed;
+    console.log(gameIds);
+    console.log(tmpPlayerData);
+    for (i = 0, n = gameIds.length; i < n; i++) {
+      let curGameId = gameIds[i];
+      console.log("Current game Id: " + curGameId);
+      if (
+        model.data.gamesPlayed[curGameId].gamemode === model.statistics.gamemode
+      ) {
+        let tmpScore = model.data.gamesPlayed[curGameId].score;
+        model.statistics.scoreData.push(tmpScore);
+        console.log(tmpScore);
+        let tmpData = model.data.gamesPlayed[curGameId].date;
+        model.statistics.dateData.push(tmpData);
+      }
+    }
+  } catch (err) {
+    alert("Player has no data!");
+    throw "Player has no data!";
+  }
+}
+
+/********************************************************************
+ * Top 5
+ *********************************************************************/
+function getTop5(val) {
+  let pId;
+  let tmpObj = [];
+  let tmp = "";
+  let counter;
+  if (val === "") {
+    return ``;
+  } else {
+    for (let i = 0; i < model.data.players.length; i++) {
+      if (val === model.data.players[i].playerName) {
+        pId = model.data.players[i].playerId;
+      }
+    }
+    for (let j = 0; j < model.data.gamesPlayed.length; j++) {
+      if (
+        model.data.gamesPlayed[j].playerId === pId &&
+        model.data.gamesPlayed[j].gamemode === "Normal"
+      ) {
+        tmpObj.push(model.data.gamesPlayed[j]);
+      }
+    }
+    //console.log(tmpObj);
+    tmpObj.sort(sortScore);
+    if (tmpObj.length > 5) {
+      counter = 5;
+    } else {
+      counter = tmpObj.length;
+    }
+    for (let k = 0; k < counter; k++) {
+      tmp += retTableData(val, tmpObj[k].date, tmpObj[k].time, tmpObj[k].score);
+    }
+  }
+  model.statistics.top5list = retTable(tmp);
+}
+
 /***************************************************
  * Timer
-***************************************************/
+ ***************************************************/
 class StopWatch {
   constructor() {
     this.hr = 0;
@@ -222,143 +361,3 @@ class StopWatch {
   }
 }
 let sWatch = new StopWatch();
-
-/***************************************************
- * Graph
-***************************************************/
-
-function getGraph(val) {
-  getDataForGraphsBasedOnPlayer(val);
-  setTimeout(myChart, 1);
-}
-function myChart() {
-  const labels = model.statistics.dateData;
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: model.statistics.graphPlayerName,
-        backgroundColor: "#1E90FF",
-        borderColor: "#1E90FF",
-        data: model.statistics.scoreData,
-      },
-    ],
-  };
-
-  const config = {
-    type: "line",
-    data: data,
-    options: {},
-  };
-  if (model.statistics.gamemode != ""){
-    document.getElementById("gamemodeSelectTitle").innerHTML = model.statistics.gamemode;
-  }
-  new Chart(document.getElementById("myChart"), config);
-
-}
-
-function getDataForGraphsBasedOnPlayer(player) {
-  const tmpPlayerData = model.data.players.find(
-    ({ playerName }) => playerName === player
-  );
-  try {
-    let playerId = tmpPlayerData.playerId;
-    model.statistics.graphPlayerName = player;
-    console.log(player);
-    model.statistics.scoreData = [];
-    model.statistics.dateData = [];
-    let gameIds = model.data.players[playerId].gamesPlayed;
-    console.log(gameIds);
-    console.log(tmpPlayerData);
-    for (i = 0, n = gameIds.length; i < n; i++) {
-      let curGameId = gameIds[i];
-      console.log("Current game Id: " + curGameId);
-      if (model.data.gamesPlayed[curGameId].gamemode === model.statistics.gamemode) {
-        let tmpScore = model.data.gamesPlayed[curGameId].score;
-        model.statistics.scoreData.push(tmpScore);
-        console.log(tmpScore);
-        let tmpData = model.data.gamesPlayed[curGameId].date;
-        model.statistics.dateData.push(tmpData);
-      }
-    };
-  }
-  catch (err) {
-    alert("Player has no data!");
-    throw "Player has no data!";
-  }
-}
-
-/********************************************************************
-* Statistics 
-*********************************************************************/
-
-function setStatMode(val) {
-  model.statistics.selected = val;
-  changeView(statisticsHTML);
-}
-
-function setSelectedGamemode(gamemode) {
-  model.statistics.gamemode = gamemode;
-  setSelectedPlayer(model.statistics.selectedPlayer, "graph");
-}
-function setSelectedPlayer(val, mode) {
-  model.statistics.selectedPlayer = val;
-  //mode === "top5" ? getTop5(val) : getGraph(val);
-  switch (mode) {
-    case "top5":
-      getTop5(val);
-      break;
-    case "graph":
-      getGraph(val);
-      break;
-  }
-  changeView(statisticsHTML);
-}
-
-function genPlayerList() {
-  model.statistics.playerNames = [`<Option>${model.main.playerName}</Option>`];
-  for (let i = 0; i < model.data.players.length; i++) {
-    model.statistics.playerNames.push(
-      `<Option>${model.data.players[i].playerName}</Option>`
-    );
-  }
-  return model.statistics.playerNames;
-}
-
-/********************************************************************
-* Top 5
-*********************************************************************/
-function getTop5(val) {
-  let pId;
-  let tmpObj = [];
-  let tmp = "";
-  let counter;
-  if (val === "") {
-    return ``;
-  } else {
-    for (let i = 0; i < model.data.players.length; i++) {
-      if (val === model.data.players[i].playerName) {
-        pId = model.data.players[i].playerId;
-      }
-    }
-    for (let j = 0; j < model.data.gamesPlayed.length; j++) {
-      if (
-        model.data.gamesPlayed[j].playerId === pId &&
-        model.data.gamesPlayed[j].gamemode === "Normal"
-      ) {
-        tmpObj.push(model.data.gamesPlayed[j]);
-      }
-    }
-    //console.log(tmpObj);
-    tmpObj.sort(sortScore);
-    if (tmpObj.length > 5) {
-      counter = 5;
-    } else {
-      counter = tmpObj.length;
-    }
-    for (let k = 0; k < counter; k++) {
-      tmp += retTableData(val, tmpObj[k].date, tmpObj[k].time, tmpObj[k].score);
-    }
-  }
-  model.statistics.top5list = retTable(tmp);
-}

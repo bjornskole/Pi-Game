@@ -6,7 +6,7 @@ const model = {
     currentPage: "main",
     pages: ["main", "gameMode", "game", "leaderboard", "statistics"],
   },
-  showBBtn:'none',
+  showBBtn: "none",
   main: {
     playerName: "Guest", //onChange check if player exists then update selectedPlayer and generate player object in db
   },
@@ -31,14 +31,14 @@ const model = {
   },
   statistics: {
     type: ["Top5", "Graph"],
-    selected: "Top5",
+    selected: "Graph",
     playerNames: [],
     selectedPlayer: "",
     top5list: "",
     scoreData: [],
     dateData: [],
     graphPlayerName: "",
-    gamemode: "",
+    gamemode: "Normal",
   },
   data: {
     // leaderboard: { List: [] },
@@ -169,8 +169,8 @@ const model = {
         time: "00:14:53",
         score: 58,
         playerId: 1,
-        gamemode: "Practice"
-      }
+        gamemode: "Practice",
+      },
     ],
     players: [
       {

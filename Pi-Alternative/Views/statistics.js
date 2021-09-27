@@ -1,5 +1,5 @@
 let statisticsHTML = () => `
-${model.showBBtn = ''}
+${(model.showBBtn = "")}
 <div class="mainContainer">
    <div>Statistics</div>
    <select class="dropDowns" onchange="setStatMode(this.value)">
@@ -35,16 +35,15 @@ let Graph = function () {
       ${genPlayerList()}
     </datalist>
     <select name="gamemodes" id="gamemodeselect" class="mainInput" onChange="setSelectedGamemode(this.value)">
-    <option id="gamemodeSelectTitle" value="Choose mode">Pick a gamemode</option> 
-    <option value="Normal">Normal</option>
-    <option value="Practice">Practice</option>
+      <option id="gamemodeSelectTitle" value="${model.statistics.gamemode}">${
+    model.statistics.gamemode
+  }</option> 
+      <option value="Normal">Normal</option>
+      <option value="Practice">Practice</option>
     </select>
     <div>
         <canvas id="myChart" class="canvas"></canvas>
     </div>
-  `;
+    ${setSelectedGamemode(model.statistics.selectedPlayer, "graph")}
+    `;
 };
-
-
-
-
