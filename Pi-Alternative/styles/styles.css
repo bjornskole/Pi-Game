@@ -108,3 +108,6 @@ body {
     background-color: #3a3838;
     border-radius: 1vh;
     }
+#id {
+    display: none;
+}
