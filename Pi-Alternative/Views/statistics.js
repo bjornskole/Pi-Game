@@ -13,6 +13,7 @@ ${(model.showBBtn = "")}
    </div>
    `;
 let Top5 = function () {
+  getTop5(model.statistics.selectedPlayer);
   return `
   <div class="mainContainer">
   <input class="mainInput" onclick="this.value = ''" onchange="setSelectedPlayer(this.value, 'top5')" type="text" list="Playernames" value="${
@@ -44,5 +45,6 @@ let Graph = function () {
     <div>
         <canvas id="myChart" class="canvas"></canvas>
     </div>
+    ${getGraph(model.statistics.selectedPlayer)}
     `;
 };

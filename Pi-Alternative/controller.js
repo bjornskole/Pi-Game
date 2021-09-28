@@ -152,16 +152,22 @@ function setStatMode(val) {
   model.statistics.selected = val;
   changeView(statisticsHTML);
 }
-
-function setSelectedPlayer(val, mode) {
+function setSelectedPlayer(val) {
   model.statistics.selectedPlayer = val;
-  //mode === "top5" ? getTop5(val) : getGraph(val);
+  changeView(statisticsHTML);
+}
+function setSelectedGamemode(gamemode) {
+  model.statistics.gamemode = gamemode;
+  changeView(statisticsHTML);
+}
+
+function chooseMode(mode) {
   switch (mode) {
     case "top5":
-      getTop5(val);
+      getTop5(val); // trenger changeView(statisticsHTML)
       break;
     case "graph":
-      getGraph(val);
+      getGraph(val); //trur ikke trenger changeView(statisticsHTML), må testes
       break;
   }
   changeView(statisticsHTML);
@@ -179,11 +185,6 @@ function genPlayerList() {
 /***************************************************
  * Graph
  ***************************************************/
-function setSelectedGamemode(gamemode) {
-  model.statistics.gamemode = gamemode;
-  setSelectedPlayer(model.statistics.selectedPlayer, "graph");
-}
-
 function getGraph(val) {
   getDataForGraphsBasedOnPlayer(val);
   setTimeout(myChart, 1);
