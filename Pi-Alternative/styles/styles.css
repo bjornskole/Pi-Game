@@ -2,76 +2,75 @@
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
-
 
 /* Firefox */
 
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 table,
 th,
 td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
 }
 
 body {
-    background-color: #121212;
-    color: white;
-    font-size: 3vh;
+  background-color: #121212;
+  color: white;
+  font-size: 3vh;
 }
 
 .mainContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    font-family: serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  font-family: serif;
 }
 
 .leaderBtns {
-    display: flex;
-    flex-direction: row;
-    font-family: serif;
+  display: flex;
+  flex-direction: row;
+  font-family: serif;
 }
 
 .mainBtns {
-    font-size: 3.14vh;
-    border: 1px solid rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
-    padding: 1%;
-    margin: 1%;
-    width: 25vh;
-    border-radius: 1vh;
-    font-family: serif;
+  font-size: 3.14vh;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  padding: 1%;
+  margin: 1%;
+  width: 25vh;
+  border-radius: 1vh;
+  font-family: serif;
 }
 
 .bckBtn {
-    font-size: 3.14vh;
-    border: 1px solid rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
-    padding: 1%;
-    margin: 1%;
-    width: 15vh;
-    border-radius: 1vh;
-    font-family: serif;
+  font-size: 3.14vh;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  padding: 1%;
+  margin: 1%;
+  width: 15vh;
+  border-radius: 1vh;
+  font-family: serif;
 }
 
 .mainInput {
-    background-color: rgb(255, 255, 255);
-    margin-top: 1%;
-    width: 25vh;
-    height: 5vh;
-    border-radius: 1vh;
-    font-size: 2vh;
-    text-align: center;
-    font-family: serif;
+  background-color: rgb(255, 255, 255);
+  margin-top: 1%;
+  width: 25vh;
+  height: 5vh;
+  border-radius: 1vh;
+  font-size: 2vh;
+  text-align: center;
+  font-family: serif;
 }
 .dropDowns {
   background-color: rgb(255, 255, 255);
@@ -88,13 +87,13 @@ body {
 }
 .navBtns {
   font-size: 3.14vh;
-    border: 1px solid rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
-    padding: 1%;
-    margin: 1%;
-    width: 6vh;
-    border-radius: 1vh;
-    font-family: serif;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  padding: 1%;
+  margin: 1%;
+  width: 6vh;
+  border-radius: 1vh;
+  font-family: serif;
 }
 
 .leader-txt {
@@ -103,11 +102,11 @@ body {
   padding-right: 1vh;
 }
 .canvas {
-    height: 50vh;
-    width: 75vh;
-    background-color: #3a3838;
-    border-radius: 1vh;
-    }
-#id {
-    display: none;
+  height: 50vh;
+  width: 75vh;
+  background-color: #3a3838;
+  border-radius: 1vh;
+}
+#null {
+  display: none;
 }
