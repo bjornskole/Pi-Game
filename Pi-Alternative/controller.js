@@ -74,7 +74,7 @@ function retTableData(names, date, time, score) {
 
 function retTable(params) {
   return `
-  <table>
+  <table id="tablestyling">
     <tr>
       <th>Player</th>
       <th>Date</th>

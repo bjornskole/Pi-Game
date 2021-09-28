@@ -110,3 +110,9 @@ body {
 #null {
   display: none;
 }
+
+#tablestyling {
+    width: 50vh;
+    text-align: left;
+    background-color: #3a3838;
+}
