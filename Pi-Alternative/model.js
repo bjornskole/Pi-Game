@@ -31,7 +31,7 @@ const model = {
   },
   statistics: {
     type: ["Top5", "Graph"],
-    selected: "Graph",
+    selected: "Top5",
     playerNames: [],
     selectedPlayer: "Guest",
     top5list: "",
