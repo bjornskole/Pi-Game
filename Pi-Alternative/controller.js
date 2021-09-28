@@ -161,7 +161,7 @@ function setSelectedGamemode(gamemode) {
   changeView(statisticsHTML);
 }
 
-function chooseMode(mode) {
+/* function chooseMode(mode) {
   switch (mode) {
     case "top5":
       getTop5(val); // trenger changeView(statisticsHTML)
@@ -171,7 +171,7 @@ function chooseMode(mode) {
       break;
   }
   changeView(statisticsHTML);
-}
+} */
 
 function genPlayerList() {
   model.statistics.playerNames = [`<Option>${model.main.playerName}</Option>`];
