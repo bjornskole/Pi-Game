@@ -33,7 +33,7 @@ const model = {
     type: ["Top5", "Graph"],
     selected: "Graph",
     playerNames: [],
-    selectedPlayer: "",
+    selectedPlayer: "Guest",
     top5list: "",
     scoreData: [],
     dateData: [],
