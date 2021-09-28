@@ -45,6 +45,8 @@ let Graph = function () {
     <div>
         <canvas id="myChart" class="canvas"></canvas>
     </div>
+    <div id="null"> 
     ${getGraph(model.statistics.selectedPlayer)}
+    </div>
     `;
 };
