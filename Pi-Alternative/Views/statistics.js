@@ -44,6 +44,5 @@ let Graph = function () {
     <div>
         <canvas id="myChart" class="canvas"></canvas>
     </div>
-    ${setSelectedGamemode(model.statistics.selectedPlayer, "graph")}
     `;
 };
