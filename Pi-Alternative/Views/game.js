@@ -77,7 +77,7 @@ function checkPractice(val, mode) {
     changeView(mode);
   } else {
     model.game.feedback =
-      "<div style='color:red;'>Your number was to low</div>";
+      "<div style='color:red;'>Your number was too low</div>";
     console.log("Low");
     model.game.life -= 1;
     oldPiState();
