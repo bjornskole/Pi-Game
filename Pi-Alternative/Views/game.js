@@ -16,7 +16,7 @@ let Practice = function () {
   <div>Lives left: ${model.game.life}</div>
   <div>${model.game.feedback}</div>
   <div>You entered: ${model.game.Input}</div>
-  <div>Correct Pi is:${
+  <div>Correct Pi is: ${
     !pi.decimalsStr
       ? ""
       : pi.decimalsStr.length > 0
@@ -36,7 +36,7 @@ let Normal = function () {
 <div>Highscore: ${checkPlayerHighScore("preGame")} </div>
 <div id="timerDiv"></div>
 <div>Current score: ${model.game.Input.length}</div>
-<div>Pi:${
+<div>Pi: ${
     !pi.decimalsStr
       ? ""
       : pi.decimalsStr.length > 0
