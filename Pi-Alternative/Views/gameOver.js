@@ -34,12 +34,13 @@ function resetGameVal() {
   model.game.life = 3;
 }
 function saveData() {
+  //stop timer
   sWatch.StopTimer();
+  //set gamescore
   let gamescore = pi.decimalsStr.length - 1;
   //get current date
   let today = new Date().toISOString().slice(0, 10);
-  //extract playerId from model.main.playerName
-  //If player doesn't exist then create player
+  //extract playerId from model.main.playerName, if player doesn't exist then create
   let curplayerdata = model.data.players.find(
     (player) => player.playerName === model.main.playerName
   );
