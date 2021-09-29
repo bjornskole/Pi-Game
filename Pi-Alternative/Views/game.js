@@ -20,7 +20,7 @@ let Practice = function () {
     !pi.decimalsStr
       ? ""
       : pi.decimalsStr.length > 0
-      ? pi.decimalsStr[0] + "," + pi.decimalsStr.slice(1)
+      ? pi.decimalsStr[0] + "." + pi.decimalsStr.slice(1)
       : ""
   }</div>
   <input class="mainInput" type="number" id="inputBox" oninput="checkPractice(this.value, Practice)"/>
@@ -40,7 +40,7 @@ let Normal = function () {
     !pi.decimalsStr
       ? ""
       : pi.decimalsStr.length > 0
-      ? pi.decimalsStr[0] + "," + pi.decimalsStr.slice(1)
+      ? pi.decimalsStr[0] + "." + pi.decimalsStr.slice(1)
       : ""
   }</div>
 <input class="mainInput" type="number" id="inputBox" oninput="checkAnswer(this.value, Normal)"/>
